@@ -4,12 +4,12 @@
     if(isset($_POST['signup'])){
         $taikhoan = $_POST['email'];
         $matkhau = md5($_POST['password']);
-        $sql = "SELECT * FROM tbl_admin WHERE username='".$taikhoan."' AND password='".$matkhau."' LIMIT 1";
+        $sql = "SELECT * FROM tbl_dangky_nguoitimviec WHERE email='".$taikhoan."' AND matkhau='".$matkhau."' LIMIT 1";
         $row = mysqli_query($mysqli,$sql);
         $count = mysqli_num_rows($row);
         if($count>0){
             $_SESSION['dangnhap'] = $taikhoan;
-            header("Location:http://localhost/web_mysqli/pages/index.php");
+            header("Location:index.php");
         }else{            
             echo '<script language="javascript">';
             echo 'alert("Tài khoản hoặc mật khẩu không đúng")';
@@ -44,7 +44,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
 
                     <div class="card">
                         <div class="card-header text-center">
-                            <a href="index.html"><button type="button" class="btn-close offset-11"  aria-label="Close"></button></a>
+                            <a href="index.php"><button type="button" class="btn-close position-absolute top-0 end-0 p-2"  aria-label="Close"></button></a>
                             <h3>Đăng nhập</h3>
                         </div>
                         <div class="card-body">
@@ -120,7 +120,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
         $(document).ready(function () {
             $('#signupForm').validate({
                 rules: {
-                    password: {required: true, minlength: 0},
+                    password: {required: true, minlength: 5},
                     email: {required: true, email: true},                  
                 },
                 messages: {               
