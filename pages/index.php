@@ -97,7 +97,6 @@
                       <li><a href="khuvucmienbac.html" class="dropdown-item">Vĩnh Long</a></li>
                       <li><a href="khuvucmientrung.html" class="dropdown-item">Vĩnh Phúc</a></li>
                       <li><a href="khuvucmiennam.html" class="dropdown-item">Yên Bái</a></li>
-                                       
                     </ul>
                     
                   </li>
@@ -116,21 +115,159 @@
 
         <!-- Ảnh chèn link -->
         <div class="container text-center">
-        <img class="img-fluid"  src="images/dxmt.jpg" />
+        <img class="img-fluid"  src="images/anhdaidien.jpg" />
         </div>
         
         <hr/>
 
         <div class="container">
           <div class="row">
-            <!-- Cty 1 -->
-            <div class="col sm-6 md-4">
-            <img class="hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white" style="height: 150px;" src="images/cty1.png"/>
+            <div class="hstack gap-3">
+            <!-- CTY 1 -->
+            <div class=" col sm-4 md-4">
+              <div class="row">
+                <div class="col-sm-6 col-md-3">
+                  <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white"
+                  style="width: 90px; height: 90px" src="images/cty1.png"/>
+                </div>
+                <div class="col-sm-6 col-md-9 py-1">
+                  <div><a class="text-decoration-none text-dark h4 " href="">TRỢ LÝ GIÁM ĐỐC</a></div>
+                  <div class="" style="width: 350px; height: 20px; border: 1px #e0d8d8; overflow-x:hidden"><a class=" text-decoration-none text-dark h6" 
+                  href="company_profile/cty1.php">CÔNG TY TNHH TẬP ĐOÀN THÀNH CÔNG HOME</a></div>
+                  <div><a class="text-decoration-none text-dark h6 " href="">HỒ CHÍ MINH</a></div>
+                </div>
+              </div>
             </div>
-            <div class="col sm-6 md-4">
+
+            <!-- CTY 2 -->
+            <div class="col sm-4 md-4">
+              <div class="row">
+                <div class="col-sm-6 col-md-3">
+                  <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white"
+                  style="width: 90px; height: 90px" src="images/cty1.png"/>
+                </div>
+                <div class="col-sm-6 col-md-9">
+                  <div><a class="text-decoration-none text-dark h4" href="">TRỢ LÝ GIÁM ĐỐC</a></div>
+                  <div><a class="ms-3 text-decoration-none text-dark h6" href="">TRỢ LÍ GIÁM ĐỐC</a></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CTY 3 -->
+            <div class="col sm-4 md-4">
+              <div class="row">
+                <div class="col-sm-6 col-md-3">
+                  <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white"
+                  style="width: 90px; height: 90px" src="images/cty1.png"/>
+                </div>
+                <div class="col-sm-6 col-md-9">
+                  <div><a class="text-decoration-none text-dark h4" href="">TRỢ LÝ GIÁM ĐỐC</a></div>
+                  <div><a class="ms-3 text-decoration-none text-dark h6" href="">TRỢ LÍ GIÁM ĐỐC</a></div>
+                </div>
+              </div>
+            </div>
 
             </div>
-            <div class="col sm-6 md-4">abc</div>
+          </div>
+        </div>
+
+
+        <div class="container">
+          <div class="row">
+
+            <!-- CTY 1 -->
+            <div class="col sm-4 md-4">
+              <div class="row">
+                <div class="col-sm-6 col-md-3">
+                  <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white"
+                  style="width: 90px; height: 90px" src="images/cty1.png"/>
+                </div>
+                <div class="col-sm-6 col-md-9">
+                  <div><a class="text-decoration-none text-dark h4" href="">TRỢ LÝ GIÁM ĐỐC</a></div>
+                  <div><a class="ms-3 text-decoration-none text-dark h6" href="">TRỢ LÍ GIÁM ĐỐC</a></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CTY 2 -->
+            <div class="col sm-4 md-4">
+              <div class="row">
+                <div class="col-sm-6 col-md-3">
+                  <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white"
+                  style="width: 90px; height: 90px" src="images/cty1.png"/>
+                </div>
+                <div class="col-sm-6 col-md-9">
+                  <div><a class="text-decoration-none text-dark h4" href="">TRỢ LÝ GIÁM ĐỐC</a></div>
+                  <div><a class="ms-3 text-decoration-none text-dark h6" href="">TRỢ LÍ GIÁM ĐỐC</a></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CTY 3 -->
+            <div class="col sm-4 md-4">
+              <div class="row">
+                <div class="col-sm-6 col-md-3">
+                  <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white"
+                  style="width: 90px; height: 90px" src="images/cty1.png"/>
+                </div>
+                <div class="col-sm-6 col-md-9">
+                  <div><a class="text-decoration-none text-dark h4" href="">TRỢ LÝ GIÁM ĐỐC</a></div>
+                  <div><a class="ms-3 text-decoration-none text-dark h6" href="">TRỢ LÍ GIÁM ĐỐC</a></div>
+                </div>
+              </div>
+            </div>
+
+            </div>
+          </div>
+        </div>
+
+
+        <div class="container">
+          <div class="row">
+
+            <!-- CTY 1 -->
+            <div class="col sm-4 md-4">
+              <div class="row">
+                <div class="col-sm-6 col-md-3">
+                  <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white"
+                  style="width: 90px; height: 90px" src="images/cty1.png"/>
+                </div>
+                <div class="col-sm-6 col-md-9">
+                  <div><a class="text-decoration-none text-dark h4" href="">TRỢ LÝ GIÁM ĐỐC</a></div>
+                  <div><a class="ms-3 text-decoration-none text-dark h6" href="">CÔNG TY TNHH TẬP ĐOÀN THÀNH CÔNG HOME</a></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CTY 2 -->
+            <div class="col sm-4 md-4">
+              <div class="row">
+                <div class="col-sm-6 col-md-3">
+                  <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white"
+                  style="width: 90px; height: 90px" src="images/cty1.png"/>
+                </div>
+                <div class="col-sm-6 col-md-9">
+                  <div><a class="text-decoration-none text-dark h4" href="">TRỢ LÝ GIÁM ĐỐC</a></div>
+                  <div><a class="ms-3 text-decoration-none text-dark h6" href="">TRỢ LÍ GIÁM ĐỐC</a></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CTY 3 -->
+            <div class="col sm-4 md-4">
+              <div class="row">
+                <div class="col-sm-6 col-md-3">
+                  <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white"
+                  style="width: 90px; height: 90px" src="images/cty1.png"/>
+                </div>
+                <div class="col-sm-6 col-md-9">
+                  <div><a class="text-decoration-none text-dark h4" href="">TRỢ LÝ GIÁM ĐỐC</a></div>
+                  <div><a class="ms-3 text-decoration-none text-dark h6" href="">TRỢ LÍ GIÁM ĐỐC</a></div>
+                </div>
+              </div>
+            </div>
+
+            </div>
           </div>
         </div>
 
