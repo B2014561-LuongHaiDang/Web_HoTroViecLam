@@ -8,6 +8,6 @@ session_unset();
 session_destroy();
 
 // Chuyển hướng người dùng đến trang đăng nhập
-header("Location: login.php");
+header("Location: index.php");
 exit();
 ?>

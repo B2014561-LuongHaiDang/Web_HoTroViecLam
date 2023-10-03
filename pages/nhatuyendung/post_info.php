@@ -48,7 +48,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
 
             <div class="card">
                 <div class="card-header text-center position-relative">
-                    <h3>Nhập thông tin công ty của bạn</h3>
+                    <h3>Nhập thông tin tuyển dụng</h3>
                 </div>
 
                 <div class="card-body" style="background-color:aqua">

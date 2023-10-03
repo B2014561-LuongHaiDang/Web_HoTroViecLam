@@ -13,6 +13,8 @@ if (isset($_POST['dangky'])) {
     $sql_dangky = mysqli_query($mysqli, "INSERT INTO tbl_dangky_nhatuyendung(email,matkhau,tencongty,sonhanvien,sodienthoai,diachi) 
     VALUE('" . $email . "','" . $matkhau . "','" . $tencongty . "','" . $sonhanvien . "','" . $hotline . "','" . $diachi . "')");
     if ($sql_dangky) {
+        header("Location:http://localhost/web_mysqli/pages/nhatuyendung/post_info.php");
+        $_SESSION['dangnhap']=$tencongty;
         echo '<script language="javascript">';
         echo 'alert("Đăng ký thành công!")';
         echo '</script>';
