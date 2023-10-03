@@ -1,19 +1,21 @@
 <?php
     session_start();
     include('config/config.php');
-    if(isset($_POST['signup'])){
+    if(isset($_POST['signupp'])){
+            
+        $tenkhachhang = $_POST['tenkhachhang'];
         $taikhoan = $_POST['email'];
         $matkhau = md5($_POST['password']);
-        $sql = "SELECT * FROM tbl_dangky_nguoitimviec WHERE email='".$taikhoan."' AND matkhau='".$matkhau."' LIMIT 1";
+        $sql = "SELECT * FROM tbl_dangky_nguoitimviec WHERE tenkhachhang='".$tenkhachhang."' AND email='".$taikhoan."' AND matkhau='".$matkhau."' LIMIT 1";
         $row = mysqli_query($mysqli,$sql);
         $count = mysqli_num_rows($row);
         if($count>0){
-            $_SESSION['dangnhap'] = $taikhoan;
-            header("Location:index.php");
-        }else{            
+            $_SESSION['dangnhap1'] = $tenkhachhang;
+            header("Location:index_nguoitimviec.php");
+        }else{
             echo '<script language="javascript">';
             echo 'alert("Tài khoản hoặc mật khẩu không đúng")';
-            echo '</script>';           
+            echo '</script>';
         }
     }
     
@@ -54,13 +56,21 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
                                 class="form-horizontal"
                                 action="#"
                             >
+
+                            <div class="form-group row p-2">
+                                <label class="col-sm-4 col-form-label" for="tenkhachhang">Tên</label>
+                                <div class="col-sm-5" style="padding-left: 0;">
+                                    <input type="text" class="form-control" id="tenkhachhang" name="tenkhachhang" placeholder="Tên của bạn" />
+                                </div>
+                            </div>
+
                                 <div class="form-group row p-2">
                                     <label
                                         class="col-sm-4 col-form-label"
                                         for="email"
                                         >Hộp thư điện tử</label
                                     >
-                                    <div class="col-sm-5">
+                                    <div class="col-sm-5" style="padding-left: 0;">
                                         <input
                                             type="text"
                                             class="form-control"
@@ -77,7 +87,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
                                         for="password"
                                         >Mật khẩu</label
                                     >
-                                    <div class="col-sm-5">
+                                    <div class="col-sm-5" style="padding-left: 0;">
                                         <input
                                             type="password"
                                             class="form-control"
@@ -94,13 +104,15 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
                                         <button
                                             type="submit"
                                             class="btn btn-primary"
-                                            name="signup"
+                                            name="signupp"
                                             value="Sign up"
                                         >
                                             Đăng nhập
                                         </button>
                                     </div>
                                 </div>
+                                <div class="text-center"><a href="">Quên mật khẩu</a></div>
+                                <div class="text-center"><a href="register.php">Đăng kí</a></div>
                             </form>
                         </div>
                     </div>
@@ -120,10 +132,14 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
         $(document).ready(function () {
             $('#signupForm').validate({
                 rules: {
+                    tenkhachhang: {
+                        required:true,
+                    },
                     password: {required: true, minlength: 5},
                     email: {required: true, email: true},                  
                 },
-                messages: {               
+                messages: {
+                    tenkhachhang:'Bạn chưa nhập tên của bạn',
                     password: {
                         required: 'Bạn chưa nhập mật khẩu',
                         minlength: 'Mật khẩu phải có ít nhất 5 ký tự',

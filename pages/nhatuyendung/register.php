@@ -1,21 +1,22 @@
 <?php
 session_start();
-include('config/config.php');
+include('config.php');
 
 if (isset($_POST['dangky'])) {
 
-    $tenkhachhang = $_POST['tenkhachhang'];
     $email = $_POST['email'];
-    $diachi = $_POST['diachi'];
-    $dienthoai = $_POST['dienthoai'];
     $matkhau = md5($_POST['matkhau']);
-    $sql_dangky = mysqli_query($mysqli, "INSERT INTO tbl_dangky_nguoitimviec(tenkhachhang,email,diachi,dienthoai,matkhau) 
-    VALUE('" . $tenkhachhang . "','" . $email . "','" . $diachi . "','" . $dienthoai . "','" . $matkhau . "')");
+    $tencongty = $_POST['tencongty'];
+    $sonhanvien = $_POST['sonhanvien'];
+    $hotline = $_POST['hotline'];
+    $diachi = $_POST['diachi'];
+    $sql_dangky = mysqli_query($mysqli, "INSERT INTO tbl_dangky_nhatuyendung(email,matkhau,tencongty,sonhanvien,sodienthoai,diachi) 
+    VALUE('" . $email . "','" . $matkhau . "','" . $tencongty . "','" . $sonhanvien . "','" . $hotline . "','" . $diachi . "')");
     if ($sql_dangky) {
         echo '<script language="javascript">';
         echo 'alert("Đăng ký thành công!")';
         echo '</script>';
-        header("Location:index.php");
+
     }
 }
 
@@ -38,48 +39,27 @@ if (isset($_POST['dangky'])) {
             <div class="col-sm-8 offset-sm-2">
                 <div class="mt-2">
                     <div class="alert alert-info text-center" role="alert">
-                        <h4>Vui lòng đăng kí tại đây!</h4>
+                        <h4>Nhà tuyển dụng đăng kí tại đây</h4>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-header text-center position-relative">
-                        <a href="index.php"><button type="button" class="btn-close position-absolute top-0 end-0 p-2" aria-label="Close"></button></a>
-                        <h3>Đăng ký thành viên</h3>
+                        <a href="http://localhost/web_mysqli/pages/index.php"><button type="button" class="btn-close position-absolute top-0 end-0 p-2" aria-label="Close"></button></a>
+                        <h3>Đăng ký để bắt đầu đăng việc ngay</h3>
                     </div>
+
                     <div class="card-body">
                         <form id="signupForm" method="POST" class="form-horizontal" action="">
-                            <!-- Họ và tên -->
-                            <div class="form-group row py-2">
-                                <label class="col-sm-4 col-form-label" for="tenkhachhang">Họ và tên</label>
-                                <div class="col-sm-5" style="padding-left: 0;">
-                                    <input type="text" class="form-control" id="tenkhachhang" name="tenkhachhang" placeholder="Họ và tên" />
-                                </div>
-                            </div>
 
                             <!-- Email -->
                             <div class="form-group row py-2">
-                                <label class="col-sm-4 col-form-label" for="email">Hộp thư điện tử</label>
+                                <label class="col-sm-4 col-form-label" for="email">Email</label>
                                 <div class="col-sm-5" style="padding-left: 0;">
-                                    <input type="text" class="form-control" id="email" name="email" placeholder="Hộp thư điện tử" />
+                                    <input type="text" class="form-control" id="email" name="email" placeholder="Email công việc" />
                                 </div>
                             </div>
 
-                            <!-- Địa chỉ -->
-                            <div class="form-group row py-2">
-                                <label class="col-sm-4 col-form-label" for="diachi">Địa chỉ</label>
-                                <div class="col-sm-5" style="padding-left: 0;">
-                                    <input type="text" class="form-control" id="diachi" name="diachi" placeholder="Địa chỉ của bạn" />
-                                </div>
-                            </div>
-
-                            <!-- Số điện thoại -->
-                            <div class="form-group row py-2">
-                                <label class="col-sm-4 col-form-label" for="dienthoai">Số điện thoại</label>
-                                <div class="col-sm-5" style="padding-left: 0;">
-                                    <input type="text" class="form-control" id="dienthoai" name="dienthoai" placeholder="Số điện thoại của bạn" />
-                                </div>
-                            </div>
 
                             <!-- Mật khẩu -->
                             <div class="form-group row py-2">
@@ -97,20 +77,55 @@ if (isset($_POST['dangky'])) {
                                 </div>
                             </div>
 
-                            <!-- Checkbox -->
-                            <div class="form-group form-check">
-                                <div class="col-sm-4 offset-sm-4">
-                                    <input class="form-check-input" type="checkbox" id="agree" name="agree" value="agree" />
-                                    <label class="form-check-label" for="agree">Đồng ý các quy định của chúng tôi</label>
+
+
+                            <div class="text-center h4" style="padding-top:10px">Thông tin công ty</div>
+
+                            <!-- Tên công ty -->
+                            <div class="form-group row py-2">
+                                <label class="col-sm-4 col-form-label" for="">Tên công ty</label>
+                                <div class="col-sm-5" style="padding-left: 0;">
+                                    <input type="text" class="form-control" id="" name="tencongty" placeholder="Nhập công ty của bạn" />
                                 </div>
                             </div>
 
-                            <div class="row py-2">
-                                <div class="col-sm-5 offset-sm-4">
-                                    <button type="submit" class="btn btn-primary" name="dangky" value="Sign up">
-                                        Đăng ký
-                                    </button>
+
+                            <!-- Số nhân viên -->
+                            <div class="form-group row py-2">
+                                <label class="col-sm-4 col-form-label" for="">Số nhân viên</label>
+                                <div class="col-sm-5" style="padding-left: 0;">
+                                    <input type="text" class="form-control" id="" name="sonhanvien" placeholder="Nhập số nhân viên" />
                                 </div>
+                            </div>
+
+                            <!-- Hotline -->
+                            <div class="form-group row py-2">
+                                <label class="col-sm-4 col-form-label" for="">Số điện thoại</label>
+                                <div class="col-sm-5" style="padding-left: 0;">
+                                    <input type="text" class="form-control" id="" name="hotline" placeholder="Nhập số điện thoại để liên hệ" />
+                                </div>
+                            </div>
+
+                            <!-- Địa chỉ -->
+                            <div class="form-group row py-2">
+                                <label class="col-sm-4 col-form-label" for="diachi">Địa chỉ</label>
+                                <div class="col-sm-5" style="padding-left: 0;">
+                                    <input type="text" class="form-control" id="diachi" name="diachi" placeholder="Địa chỉ công ty của bạn" />
+                                </div>
+                            </div>
+
+                            <div class="">
+                                <form id="signupForm" method="POST" class="form-horizontal" action="">
+
+
+                                    <div class="row py-2">
+                                        <div class="col-sm-5 offset-sm-4">
+                                            <button type="submit" class="btn btn-primary" name="dangky" value="Sign up">
+                                                Đăng ký
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </form>
                     </div>
@@ -134,6 +149,15 @@ if (isset($_POST['dangky'])) {
         $(document).ready(function() {
             $('#signupForm').validate({
                 rules: {
+                    hotline: {
+                        required:true,
+                    },
+                    sonhanvien: {
+                        required:true,
+                    },
+                    tencongty: {
+                        required:true,
+                    },
                     tenkhachhang: {
                         required: true,
                         minlength: 0
@@ -166,7 +190,15 @@ if (isset($_POST['dangky'])) {
                     agree: 'required',
                 },
                 messages: {
-
+                    hotline: {
+                        required: 'Bạn chưa nhập số điện thoại liên hệ',
+                    },
+                    sonhanvien: {
+                        required: 'Bạn chưa nhập số nhân viên',
+                    },
+                    tencongty: {
+                        required: 'Bạn chưa nhập tên công ty',
+                    },
                     tenkhachhang: {
                         required: 'Bạn chưa nhập vào tên của bạn',
                     },

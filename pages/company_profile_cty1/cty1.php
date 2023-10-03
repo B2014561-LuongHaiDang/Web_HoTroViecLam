@@ -1,3 +1,9 @@
+<?php
+    session_start();
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -105,8 +111,14 @@
                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                   <button class="btn btn-outline-primary" type="submit">Search</button>
                 </form>
-                <div><a href="register.php"><button type="button" class="btn btn-white text-dark">Đăng kí</button></a></div>
-                <div><a href="login.php"><button type="button" class="btn btn-white text-dark">Đăng nhập</button></a></div>
+                <div class="ps-2 fw-bold"><?php
+                        if (isset($_SESSION['dangnhap1'])) {
+                            echo $_SESSION['dangnhap1'];
+                        }
+                        ?></div>
+                <div><a href="#"><button type="button" class="btn btn-white text-dark">| Người tìm việc</button></a></div>
+                <div><a href="http://localhost/web_mysqli/pages/login.php"><button type="button" class="btn btn-white text-dark">Đăng xuất</button></a></div>
+            </div>
               </div>
             </div>
         </nav>

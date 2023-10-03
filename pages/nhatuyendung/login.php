@@ -1,15 +1,16 @@
 <?php
     session_start();
-    include('config/config.php');
+    include('config.php');
     if(isset($_POST['signup'])){
-        $taikhoan = $_POST['email'];
-        $matkhau = md5($_POST['password']);
-        $sql = "SELECT * FROM tbl_admin WHERE username='".$taikhoan."' AND password='".$matkhau."' LIMIT 1";
+        $tencongty = $_POST['tencongty'];
+        $email = $_POST['email'];
+        $matkhau = md5($_POST['matkhau']);
+        $sql = "SELECT * FROM tbl_dangky_nhatuyendung WHERE tencongty='".$tencongty."' AND email='".$email."' AND matkhau='".$matkhau."' LIMIT 1";
         $row = mysqli_query($mysqli,$sql);
         $count = mysqli_num_rows($row);
         if($count>0){
-            $_SESSION['dangnhap'] = $taikhoan;
-            header("Location:http://localhost/web_mysqli/pages/index.php");
+            $_SESSION['dangnhap'] = $tencongty;
+            header("Location:http://localhost/web_mysqli/pages/nhatuyendung/post_info.php");
         }else{
             echo '<script language="javascript">';
             echo 'alert("Tài khoản hoặc mật khẩu không đúng")';
@@ -44,7 +45,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
 
                     <div class="card">
                         <div class="card-header text-center">
-                            <a href="index.html"><button type="button" class="btn-close offset-11"  aria-label="Close"></button></a>
+                            <a href="http://localhost/web_mysqli/pages/index.php"><button type="button" class="btn-close position-absolute top-0 end-0 p-2"  aria-label="Close"></button></a>
                             <h3>Đăng nhập</h3>
                         </div>
                         <div class="card-body">
@@ -54,7 +55,15 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
                                 class="form-horizontal"
                                 action="#"
                             >
-                                <div class="form-group row p-2">
+
+                            <div class="form-group row py-2">
+                                <label class="col-sm-4 col-form-label" for="">Tên công ty</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" id="" name="tencongty" placeholder="Nhập công ty của bạn" />
+                                </div>
+                            </div>
+
+                                <div class="form-group row py-2">
                                     <label
                                         class="col-sm-4 col-form-label"
                                         for="email"
@@ -66,12 +75,12 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
                                             class="form-control"
                                             id="email"
                                             name="email"
-                                            placeholder="Hộp thư điện tử"
+                                            placeholder="Email mà bạn đã đăng kí"
                                         />
                                     </div>
                                 </div>
                                 
-                                <div class="form-group row p-2">
+                                <div class="form-group row py-2">
                                     <label
                                         class="col-sm-4 col-form-label"
                                         for="password"
@@ -82,8 +91,8 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
                                             type="password"
                                             class="form-control"
                                             id="password"
-                                            name="password"
-                                            placeholder="Nhập mật khẩu tài khoản web"
+                                            name="matkhau"
+                                            placeholder="Nhập mật khẩu"
                                         />
                                     </div>
                                 </div>
@@ -101,6 +110,10 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
                                         </button>
                                     </div>
                                 </div>
+
+                                <div class="text-center"><a href="">Quên mật khẩu?</a></div>
+                                <div class="text-center"><a href="register.php">Đăng kí</a></div>
+
                             </form>
                         </div>
                     </div>
@@ -120,15 +133,22 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
         $(document).ready(function () {
             $('#signupForm').validate({
                 rules: {
-                    password: {required: true, minlength: 0},
-                    email: {required: true, email: true},                  
+
+                    tencongty:{
+                        required:true,
+                    },
+                    matkhau: {required: true, minlength: 5},
+                    email: {required: true, email: true}
                 },
-                messages: {               
-                    password: {
+                messages: {
+                    tencongty:{
+                        required:'Nhập tên công ty của bạn'
+                    },
+                    matkhau: {
                         required: 'Bạn chưa nhập mật khẩu',
                         minlength: 'Mật khẩu phải có ít nhất 5 ký tự',
                     },
-                    email: 'Hộp thư điện tử không hợp lệ',
+                    email: 'Email không đúng',
                 },
                 errorElement: 'div',
                 errorPlacement: function (error, element){
