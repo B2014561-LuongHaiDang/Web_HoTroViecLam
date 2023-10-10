@@ -117,8 +117,8 @@ session_start();
                 </div>
 
                 <div class="ps-2 fw-bold"><?php
-                        if (isset($_SESSION['dangnhap1'])) {
-                            echo $_SESSION['dangnhap1'];
+                        if (isset($_SESSION['dangnhap'])) {
+                            echo $_SESSION['dangnhap'];
                         }
                         ?></div>
                 <div><a href="#"><button type="button" class="btn btn-white text-dark">| Người tìm việc</button></a></div>

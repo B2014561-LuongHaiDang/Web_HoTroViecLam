@@ -8,20 +8,12 @@ if (isset($_POST['dangky_post_info'])) {
     $tencongty_post_info = $_POST['tencongty_post_info'];
     $diachi_post_info = $_POST['diachi_post_info'];
     $mucluong = $_POST['mucluong'];
-    $sql_dangky = mysqli_query($mysqli, "INSERT INTO tbl_thongtintuyendung(vitri_tuyendung,tencongty,vitri_congty,mucluong_tuyendung)
-    VALUE('" . $vitri_post_info . "','" . $tencongty_post_info . "','" . $diachi_post_info . "','" . $mucluong . "')");
-    // if ($sql_dangky) {
-    //     echo '<script language="javascript">';
-    //     echo 'alert("Đăng thông tin thành công")';
-    //     echo '</script>';
-
-    // }
-    if($sql_dangky){
-        $_SESSION['dangnhap10'] = $vitri_post_info;
-        $_SESSION['dangnhap11'] = $tencongty_post_info;
-        $_SESSION['dangnhap12'] = $diachi_post_info;
-        header("Location:http://localhost/web_mysqli/pages/index1.php");
-    }
+    $image = $_POST['image'];
+    $sql = "INSERT INTO tbl_thongtintuyendung(vitri_tuyendung,tencongty,vitri_congty,mucluong_tuyendung, images)
+    VALUE('" . $vitri_post_info . "','" . $tencongty_post_info . "','" . $diachi_post_info . "','" . $mucluong . "','" . $image . "')";
+    $ketqua = $conn->prepare($sql);
+    $ketqua->execute();
+    header("Location:http://localhost/web_mysqli/pages/index.php");
 }
 
 ?>
@@ -86,19 +78,12 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
                             </div>
                         </div>
 
-                        <!-- <div class="form-group row py-2">
-                            <label class="col-form-label" for="">Logo công ty
-                                <div id="content">
-                                    <form method="POST" action="upload.php" enctype="multipart/form-data">
-                                        <input type="hidden" name="size" value="1000000">
-                                        <input type="file" name="image">
-                                        <button type="submit" name="upload">POST</button>
-                                        
-                                    </form>
-                                </div>
-                            </label>
-
-                        </div> -->
+                        <div class="form-group row py-2">
+                            <label class="col-sm-4 col-form-label" for="">Logo công ty</label>
+                            <div class="col-sm-5" style="padding-left: 0;">
+                                <input type="text" class="form-control" id="" name="image" placeholder="Link ảnh logo tại đây" />
+                            </div>
+                        </div>
 
 
                         <div class="">

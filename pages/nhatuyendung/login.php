@@ -1,22 +1,45 @@
 <?php
-    session_start();
-    include('config.php');
-    if(isset($_POST['signup'])){
-        $tencongty = $_POST['tencongty'];
-        $email = $_POST['email'];
-        $matkhau = md5($_POST['matkhau']);
-        $sql = "SELECT * FROM tbl_dangky_nhatuyendung WHERE tencongty='".$tencongty."' AND email='".$email."' AND matkhau='".$matkhau."' LIMIT 1";
-        $row = mysqli_query($mysqli,$sql);
-        $count = mysqli_num_rows($row);
-        if($count>0){
-            $_SESSION['dangnhap'] = $tencongty;
-            header("Location:http://localhost/web_mysqli/pages/nhatuyendung/post_info.php");
-        }else{
-            echo '<script language="javascript">';
-            echo 'alert("Tài khoản hoặc mật khẩu không đúng")';
-            echo '</script>';
-        }
+//     session_start();
+//     include('config.php');
+//     if(isset($_POST['signup'])){
+//         $email = $_POST['email'];
+//         $matkhau = md5($_POST['matkhau']);
+//         $sql = "SELECT * FROM tbl_dangky_nhatuyendung WHERE email='".$email."' AND matkhau='".$matkhau."' LIMIT 1";
+//         $stmt = mysqli_prepare($mysqli, $sql);
+//   mysqli_stmt_execute($stmt);
+
+//   $result = mysqli_stmt_get_result($stmt);
+//   $count = mysqli_num_rows($result);
+
+
+//         if($count>0){     
+//             header("Location:http://localhost/web_mysqli/pages/nhatuyendung/post_info.php");
+//         }else{
+//             echo '<script language="javascript">';
+//             echo 'alert("Tài khoản hoặc mật khẩu không đúng")';
+//             echo '</script>';
+//         }
+//     }
+
+session_start();
+include('config.php');
+if (isset($_POST['signup'])) {
+    
+    $email = $_POST['email'];
+    $matkhau = md5($_POST['matkhau']);
+    $sql = "SELECT * FROM tbl_dangky_nhatuyendung WHERE email='" . $email . "'AND matkhau='" . $matkhau . "' LIMIT 1";
+    $ketqua = $conn->query($sql);
+    $ketqua = $ketqua->fetchAll(PDO::FETCH_ASSOC);
+    
+    if ($ketqua) { 
+        $_SESSION['tencongty']=$ketqua[0]['tencongty'];
+        header("Location:http://localhost/web_mysqli/pages/index.php");
+    } else {
+        echo '<script language="javascript">';
+        echo 'alert("Tài khoản hoặc mật khẩu không đúng")';
+        echo '</script>';
     }
+}
     
 ?>
 
@@ -36,7 +59,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
                 <div class="col-sm-8 offset-sm-2">
                     <div class="mt-2">
                         <div
-                            class="alert alert-info text-center"
+                            class="alert alert-info text-center "
                             role="alert"
                         >
                             <h4>Vui lòng đăng nhập tại đây!</h4>
@@ -44,11 +67,11 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
                     </div>
 
                     <div class="card">
-                        <div class="card-header text-center">
+                        <div class="card-header text-center bg-secondary-subtle text-emphasis-secondary">
                             <a href="http://localhost/web_mysqli/pages/index.php"><button type="button" class="btn-close position-absolute top-0 end-0 p-2"  aria-label="Close"></button></a>
                             <h3>Đăng nhập</h3>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body " >
                             <form
                                 id="signupForm"
                                 method="post"
@@ -56,12 +79,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
                                 action="#"
                             >
 
-                            <div class="form-group row py-2">
-                                <label class="col-sm-4 col-form-label" for="">Tên công ty</label>
-                                <div class="col-sm-5">
-                                    <input type="text" class="form-control" id="" name="tencongty" placeholder="Nhập công ty của bạn" />
-                                </div>
-                            </div>
+                            
 
                                 <div class="form-group row py-2">
                                     <label
@@ -102,7 +120,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
                                     <div class="col-sm-5 offset-sm-4">
                                         <button
                                             type="submit"
-                                            class="btn btn-primary"
+                                            class="btn bg-secondary-subtle text-emphasis-secondary"
                                             name="signup"
                                             value="Sign up"
                                         >
