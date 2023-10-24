@@ -10,15 +10,12 @@ if (isset($_POST['dangky'])) {
     $sonhanvien = $_POST['sonhanvien'];
     $hotline = $_POST['hotline'];
     $diachi = $_POST['diachi'];
-    $sql_dangky = mysqli_query($mysqli, "INSERT INTO tbl_dangky_nhatuyendung(email,matkhau,tencongty,sonhanvien,sodienthoai,diachi) 
-    VALUE('" . $email . "','" . $matkhau . "','" . $tencongty . "','" . $sonhanvien . "','" . $hotline . "','" . $diachi . "')");
-    if ($sql_dangky) {
-        header("Location:http://localhost/web_mysqli/pages/nhatuyendung/post_info.php");
-        $_SESSION['dangnhap']=$tencongty;
-        echo '<script language="javascript">';
-        echo 'alert("Đăng ký thành công!")';
-        echo '</script>';
-
+    $sql = "INSERT INTO tbl_dangky_nhatuyendung(email,matkhau,tencongty,sonhanvien,sodienthoai,diachi) VALUE(?,?,?,?,?,?)";
+    $ketqua = $conn->prepare($sql);
+    $ketqua->execute([$email, $matkhau, $tencongty, $sonhanvien, $hotline, $diachi]);
+    if ($ketqua) {
+        $_SESSION['tencongty'] = $ketqua['tencongty'];
+        header("Location:http://localhost/web_mysqli/pages/index.php");
     }
 }
 
@@ -47,7 +44,7 @@ if (isset($_POST['dangky'])) {
 
                 <div class="card">
                     <div class="card-header text-center position-relative">
-                        <a href="http://localhost/web_mysqli/pages/index.php"><button type="button" class="btn-close position-absolute top-0 end-0 p-2" aria-label="Close"></button></a>
+                        <!-- <a href="http://localhost/web_mysqli/pages/index.php"><button type="button" class="btn-close position-absolute top-0 end-0 p-2" aria-label="Close"></button></a> -->
                         <h3>Đăng ký để bắt đầu đăng việc ngay</h3>
                     </div>
 
@@ -55,91 +52,124 @@ if (isset($_POST['dangky'])) {
                         <form id="signupForm" method="POST" class="form-horizontal" action="">
 
                             <!-- Email -->
-                            <div class="form-group row py-2">
-                                <label class="col-sm-4 col-form-label" for="email">Email</label>
-                                <div class="col-sm-5" style="padding-left: 0;">
-                                    <input type="text" class="form-control" id="email" name="email" placeholder="Email công việc" />
-                                </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="" name="email">
                             </div>
 
 
                             <!-- Mật khẩu -->
-                            <div class="form-group row py-2">
-                                <label class="col-sm-4 col-form-label" for="matkhau">Mật khẩu</label>
-                                <div class="col-sm-5" style="padding-left: 0;">
-                                    <input type="password" class="form-control" id="matkhau" name="matkhau" placeholder="Tạo mật khẩu cho tài khoản" />
-                                </div>
-                            </div>
 
-                            <!-- Nhập lại mật khẩu -->
-                            <div class="form-group row py-2">
-                                <label class="col-sm-4 col-form-label" for="confirm_password">Nhập lại mật khẩu</label>
-                                <div class="col-sm-5" style="padding-left: 0;">
-                                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Nhập lại mật khẩu" />
-                                </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
+                                <input type="password" class="form-control" name="matkhau">
                             </div>
 
 
+                            <div class="text-center h4" style="">Thông tin công ty</div>
 
-                            <div class="text-center h4" style="padding-top:10px">Thông tin công ty</div>
 
                             <!-- Tên công ty -->
-                            <div class="form-group row py-2">
-                                <label class="col-sm-4 col-form-label" for="">Tên công ty</label>
-                                <div class="col-sm-5" style="padding-left: 0;">
-                                    <input type="text" class="form-control" id="" name="tencongty" placeholder="Nhập công ty của bạn" />
-                                </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Tên công ty</label>
+                                <input type="text" class="form-control" id="" name="tencongty">
                             </div>
 
 
                             <!-- Số nhân viên -->
-                            <div class="form-group row py-2">
-                                <label class="col-sm-4 col-form-label" for="">Số nhân viên</label>
-                                <div class="col-sm-5" style="padding-left: 0;">
-                                    <input type="text" class="form-control" id="" name="sonhanvien" placeholder="Nhập số nhân viên" />
-                                </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Số nhân viên</label>
+                                <input type="text" class="form-control" id="" name="sonhanvien">
                             </div>
 
                             <!-- Hotline -->
-                            <div class="form-group row py-2">
-                                <label class="col-sm-4 col-form-label" for="">Số điện thoại</label>
-                                <div class="col-sm-5" style="padding-left: 0;">
-                                    <input type="text" class="form-control" id="" name="hotline" placeholder="Nhập số điện thoại để liên hệ" />
-                                </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Số điện thoại</label>
+                                <input type="text" class="form-control" id="" name="hotline">
                             </div>
 
                             <!-- Địa chỉ -->
-                            <div class="form-group row py-2">
-                                <label class="col-sm-4 col-form-label" for="diachi">Địa chỉ</label>
-                                <div class="col-sm-5" style="padding-left: 0;">
-                                    <input type="text" class="form-control" id="diachi" name="diachi" placeholder="Địa chỉ công ty của bạn" />
-                                </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Địa chỉ</label>
+                                <input type="text" class="form-control" id="" name="diachi">
                             </div>
 
-                            <div class="">
-                                <form id="signupForm" method="POST" class="form-horizontal" action="">
-
-
-                                    <div class="row py-2">
-                                        <div class="col-sm-5 offset-sm-4">
-                                            <button type="submit" class="btn btn-primary" name="dangky" value="Sign up">
-                                                Đăng ký
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
+                            <div class="form-group form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="agree" name="agree" value="agree" />
+                                <label class="form-check-label" for="agree">Đồng ý các quy định của chúng tôi</label>
                             </div>
-                        </form>
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary" name="dangky">Đăng ký</button>
+                            </div>
+                            <div class="text-center">Quay lại <a href="login.php">Đăng nhập</a></div>
+
                     </div>
+                    </form>
                 </div>
             </div>
-            <!-- Cột nội dung -->
         </div>
-        <!-- Dòng nội dung -->
+        <!-- Cột nội dung -->
     </div>
-    <!-- Container -->
+    <!-- Dòng nội dung -->
     </script>
     </nav>
+
+    <hr />
+    <div class="text-center" style="background-color:#e0d8d8 ; padding-bottom:50px;padding-top:50px;">
+        <div class="row">
+
+            <div class="col-sm-4 col-md-4 h4">Về hỗ trợ việc làm
+                <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Về chúng tôi</a>
+                </div>
+                <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Liên hệ</a>
+                </div>
+                <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Thỏa thuận người dùng</a>
+                </div>
+            </div>
+
+            <div class="col-sm-4 col-md-4 h4">Dành cho ứng viên
+                <div class="h5 ms-2"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Việc làm</a>
+                </div>
+                <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Cẩm nang xin việc</a>
+                </div>
+                <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Mẫu CV xin việc</a>
+                </div>
+            </div>
+
+            <div class="col-sm-4 col-md-4 h4">Việc làm theo khu vực
+                <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Hồ Chí Minh</a>
+                </div>
+                <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Cần Thơ</a>
+                </div>
+                <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Bạc Liêu</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-4 col-md-4 h4">Chứng nhận
+                <div>
+                    <img class="img-fluid" src="../images/chungnhan.png" />
+                </div>
+            </div>
+            <div class="col-sm-4 col-md-4 h4">Dành cho nhà tuyển dụng
+                <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Dịch vụ</a>
+                </div>
+                <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Cẩm nang tuyển dụng</a>
+                </div>
+            </div>
+            <div class="col-sm-4 col-md-4 h4">Việc làm theo ngành nghề
+                <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Quản trị kinh doanh</a>
+                </div>
+                <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Kế toán</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
     <script type="text/javascript">
@@ -152,13 +182,13 @@ if (isset($_POST['dangky'])) {
             $('#signupForm').validate({
                 rules: {
                     hotline: {
-                        required:true,
+                        required: true,
                     },
                     sonhanvien: {
-                        required:true,
+                        required: true,
                     },
                     tencongty: {
-                        required:true,
+                        required: true,
                     },
                     tenkhachhang: {
                         required: true,
@@ -172,19 +202,12 @@ if (isset($_POST['dangky'])) {
                         required: true,
                         minlength: 5
                     },
-                    username: {
-                        required: true,
-                        minlength: 2
-                    },
+
                     matkhau: {
                         required: true,
                         minlength: 5
                     },
-                    confirm_password: {
-                        required: true,
-                        minlength: 5,
-                        equalTo: '#matkhau',
-                    },
+
                     email: {
                         required: true,
                         email: true
@@ -215,11 +238,7 @@ if (isset($_POST['dangky'])) {
                         required: 'Bạn chưa nhập mật khẩu',
                         minlength: 'Mật khẩu phải có ít nhất 5 ký tự',
                     },
-                    confirm_password: {
-                        required: 'Bạn chưa nhập mật khẩu',
-                        minlength: 'Mật khẩu phải có ít nhất 5 ký tự',
-                        equalTo: 'Mật khẩu không trùng khớp với mật khẩu đã nhập',
-                    },
+
                     email: 'Hộp thư điện tử không hợp lệ',
                     agree: 'Bạn phải đồng ý với các quy định của chúng tôi',
                 },
