@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('config/config.php');
+include('../pages/config/config.php');
 $sql = "select * from tbl_thongtintuyendung where da_duyet=1";
 $ketqua = $conn->query($sql);
 $ketqua = $ketqua->fetchAll(PDO::FETCH_ASSOC);

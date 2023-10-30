@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../config/config.php');
+include('config/config.php');
 $id = $_GET['id'];
 
 $sql = "SELECT * FROM tbl_thongtintuyendung WHERE tencongty=? and da_duyet=1";
@@ -35,7 +35,7 @@ $ketqua = $ketqua->fetchAll(PDO::FETCH_ASSOC);
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
 
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="../index.php">Trang chủ</a>
+              <a class="nav-link active" aria-current="page" href="index.php">Trang chủ</a>
             </li>
 
             <li class="nav-item">
@@ -203,8 +203,8 @@ $ketqua = $ketqua->fetchAll(PDO::FETCH_ASSOC);
               <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white" src="<?= $cty['images'] ?>" />
             </div>
             <div class="col-sm-6 col-md-10 ">
-            <div class="" style="padding-top:10px"><a class="text-decoration-none text-dark h5 fw-bold " href="company_profile_cty1/cty1.php"><?= $cty['vitri_tuyendung'] ?></a></div>
-              <div class=""><a class=" text-decoration-none text-dark h6 " href="company_profile_cty1/cty1.php?id=<?= $cty['tencongty'] ?>"><?= $cty['tencongty'] ?></a></div>
+            <div class="" style="padding-top:10px"><a class="text-decoration-none text-dark h5 fw-bold " href="cty1.php"><?= $cty['vitri_tuyendung'] ?></a></div>
+              <div class=""><a class=" text-decoration-none text-dark h6 " href="cty1.php?id=<?= $cty['tencongty'] ?>"><?= $cty['tencongty'] ?></a></div>
               <div class=""><a class="text-decoration-none text-dark h6 " href=""><?= $cty['vitri_congty'] ?></a></div>
               <div class=""><a class="text-decoration-none text-danger h6 fw-bold" href="">Lương: <?= $cty['mucluong_tuyendung'] ?></a></div>
             </div>

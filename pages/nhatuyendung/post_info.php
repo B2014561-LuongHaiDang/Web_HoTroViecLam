@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('config.php');
+include('../config/config.php');
 
 if (isset($_POST['dangky_post_info'])) {
 
@@ -9,10 +9,10 @@ if (isset($_POST['dangky_post_info'])) {
     $diachi_post_info = $_POST['diachi_post_info'];
     $mucluong = $_POST['mucluong'];
     $image = $_POST['image'];
-    $sql = "INSERT INTO tbl_thongtintuyendung(vitri_tuyendung,tencongty,vitri_congty,mucluong_tuyendung, images)
-    VALUE('" . $vitri_post_info . "','" . $tencongty_post_info . "','" . $diachi_post_info . "','" . $mucluong . "','" . $image . "')";
+    $link = $_POST['link'];
+    $sql = "INSERT INTO tbl_thongtintuyendung(vitri_tuyendung,tencongty,vitri_congty,mucluong_tuyendung, images, link) VALUE(?,?,?,?,?,?)";
     $ketqua = $conn->prepare($sql);
-    $ketqua->execute();
+    $ketqua->execute([$vitri_post_info, $tencongty_post_info, $diachi_post_info, $mucluong, $image, $link]);
     header("Location:http://localhost/web_mysqli/pages/index.php");
 }
 
@@ -33,81 +33,73 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
 </head>
 
 <body>
-
-    <div class="row">
-        <div class="col-sm-6 col-md-4"></div>
-        <div class="col-sm-6 col-md-4">
-
-            <div class="card">
-                <div class="card-header text-center position-relative">
-                    <h3>Nhập thông tin tuyển dụng</h3>
-                </div>
-
-                <div class="card-body" style="background-color:aqua">
-                    <form id="signupForm" method="POST" class="form-horizontal" action="">
-
-                        <!-- Vị trí cần tuyển -->
-                        <div class="form-group row py-2">
-                            <label class="col-sm-4 col-form-label" for="">Vị trí cần tuyển</label>
-                            <div class="col-sm-5" style="padding-left: 0;">
-                                <input type="text" class="form-control" id="" name="vitri_post_info" placeholder="Nhập vào đây" />
-                            </div>
-                        </div>
-
-
-                        <!-- Tên công ty -->
-                        <div class="form-group row py-2">
-                            <label class="col-sm-4 col-form-label" for="">Tên công ty</label>
-                            <div class="col-sm-5" style="padding-left: 0;">
-                                <input type="text" class="form-control" id="" name="tencongty_post_info" placeholder="Nhập vào đây" />
-                            </div>
-                        </div>
-
-                        <!-- Địa chỉ -->
-                        <div class="form-group row py-2">
-                            <label class="col-sm-4 col-form-label" for="diachi">Địa chỉ công ty</label>
-                            <div class="col-sm-5" style="padding-left: 0;">
-                                <input type="text" class="form-control" id="diachi" name="diachi_post_info" placeholder="Nhập vào đây" />
-                            </div>
-                        </div>
-
-                        <div class="form-group row py-2">
-                            <label class="col-sm-4 col-form-label" for="">Mức lương</label>
-                            <div class="col-sm-5" style="padding-left: 0;">
-                                <input type="text" class="form-control" id="" name="mucluong" placeholder="Nhập vào đây" />
-                            </div>
-                        </div>
-
-                        <div class="form-group row py-2">
-                            <label class="col-sm-4 col-form-label" for="">Logo công ty</label>
-                            <div class="col-sm-5" style="padding-left: 0;">
-                                <input type="text" class="form-control" id="" name="image" placeholder="Link ảnh logo tại đây" />
-                            </div>
-                        </div>
-
-
-                        <div class="">
-                            <form id="signupForm" method="POST" class="form-horizontal" action="">
-                                <div class="row py-2">
-                                    <div class="col-sm-5 offset-sm-4">
-                                        <button type="submit" class="btn btn-primary" name="dangky_post_info" value="Sign up">
-                                            Đăng thông tin
-                                        </button>
-                                    </div>
-                                </div>
-
-
-
-
-                            </form>
-                        </div>
-                    </form>
-                </div>
+    <div class="">
+        <div class="row">
+            <div class="col-sm-6 col-md-4 d-flex align-items-center">
+                <img class=" img-fluid" src="https://dxwd4tssreb4w.cloudfront.net/web/images/pages/login/banner.png" alt="">
             </div>
-            <div class="col-sm-6 col-md-4"></div>
+            <div class="col-sm-6 col-md-4">
+
+                <div class="card">
+                    <div class="card-header text-center position-relative alert alert-info">
+                        <h3>Nhập thông tin tuyển dụng</h3>
+                    </div>
+
+                    <div class="card-body ">
+                        <form id="signupForm" method="POST" class="form-horizontal" action="">
+
+                            <!-- Vị trí cần tuyển -->
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Vị trí tuyển dụng</label>
+                                <input type="text" class="form-control" id="" name="vitri_post_info">
+                            </div>
+
+                            <!-- Tên công ty -->
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Tên công ty</label>
+                                <input type="text" class="form-control" id="" name="tencongty_post_info">
+                            </div>
+
+                            <!-- Địa chỉ -->
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Địa chỉ</label>
+                                <input type="text" class="form-control" id="" name="diachi_post_info">
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Mức lương</label>
+                                <input type="text" class="form-control" id="" name="mucluong">
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Logo công ty</label>
+                                <input type="text" class="form-control" id="" name="image">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Link web công ty</label>
+                                <input type="text" class="form-control" id="" name="link">
+                            </div>
+
+                            <div class="">
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary" name="dangky_post_info">Đăng thông tin</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4"></div>
+            </div>
         </div>
     </div>
 
+    <hr />
+    <?php
+    include "../../code/footer.php";
+    ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 

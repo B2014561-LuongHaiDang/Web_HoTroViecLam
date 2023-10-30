@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include('config/config.php');
+    include('../pages/config/config.php');
     if(isset($_POST['signup'])){
         $taikhoan = $_POST['email'];
         $matkhau = md5($_POST['password']);

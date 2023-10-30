@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('config.php');
+include('../config/config.php');
 
 if (isset($_POST['dangky'])) {
 
@@ -116,59 +116,9 @@ if (isset($_POST['dangky'])) {
     </nav>
 
     <hr />
-    <div class="text-center" style="background-color:#e0d8d8 ; padding-bottom:50px;padding-top:50px;">
-        <div class="row">
-
-            <div class="col-sm-4 col-md-4 h4">Về hỗ trợ việc làm
-                <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Về chúng tôi</a>
-                </div>
-                <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Liên hệ</a>
-                </div>
-                <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Thỏa thuận người dùng</a>
-                </div>
-            </div>
-
-            <div class="col-sm-4 col-md-4 h4">Dành cho ứng viên
-                <div class="h5 ms-2"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Việc làm</a>
-                </div>
-                <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Cẩm nang xin việc</a>
-                </div>
-                <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Mẫu CV xin việc</a>
-                </div>
-            </div>
-
-            <div class="col-sm-4 col-md-4 h4">Việc làm theo khu vực
-                <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Hồ Chí Minh</a>
-                </div>
-                <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Cần Thơ</a>
-                </div>
-                <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Bạc Liêu</a>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="row">
-
-            <div class="col-sm-4 col-md-4 h4">Chứng nhận
-                <div>
-                    <img class="img-fluid" src="../images/chungnhan.png" />
-                </div>
-            </div>
-            <div class="col-sm-4 col-md-4 h4">Dành cho nhà tuyển dụng
-                <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Dịch vụ</a>
-                </div>
-                <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Cẩm nang tuyển dụng</a>
-                </div>
-            </div>
-            <div class="col-sm-4 col-md-4 h4">Việc làm theo ngành nghề
-                <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Quản trị kinh doanh</a>
-                </div>
-                <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Kế toán</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php
+    include "../../code/footer.php";
+    ?>
 
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
