@@ -24,6 +24,7 @@ $ketqua = $ketqua->fetchAll();
     ?>
     
     <div class="container" style="padding-top: 20px;"><span style="font-family: Arial; font-size: 17px">
+    <div class="row">
 
             <h1>Về chúng tôi</h1>
             <p class="indent">Được thành lập vào năm 2006, CareerLink.vn đã từng bước trở thành cầu nối vững chắc giữa người lao động và nhà tuyển dụng.
@@ -79,10 +80,12 @@ $ketqua = $ketqua->fetchAll();
 
 
             <h3>Khách hàng của chúng tôi</h3>
-            <div style="height: 100%;width:100%; padding-bottom:20px">
-                <img src="https://dxwd4tssreb4w.cloudfront.net/web/images/pages/about_us/our_client.png" alt="">
+            <div style="padding-bottom:20px">
+                <img class="img-fluid" src="https://dxwd4tssreb4w.cloudfront.net/web/images/pages/about_us/our_client.png" alt="">
+            </div>
             </div>
         </span>
+        
     </div>
 
 
