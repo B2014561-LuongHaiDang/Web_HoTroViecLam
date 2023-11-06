@@ -40,7 +40,25 @@ $ketqua = $ketqua->fetchAll();
   include "../code/info.php";
   ?>
 
+  <div class="container h3 fw-bold" style="padding-top:25px">Cẩm nang tìm việc
+    <div class="row" style="padding-top:20px">
+      <div class="col-6 col-md-4">
+        <div class="border">
+          <a href="camnangvieclam.php"><img class="img-fluid hot-job__logo  mr-2 mr-sm-3 border-0" src="https://cl-wpml.s3.ap-southeast-1.amazonaws.com/cam-nang-viec-lam/wp-content/uploads/2023/06/12111459/smiling-diverse-businesswomen-shake-hands-group-meeting-deal-concept-2.jpg" /></a>
+          <div class="h6 ms-1"><a class="text-decoration-none" href="camnangvieclam.php">Bài học thành công</a></div>
+          <div class="h4 ms-1"><a class="text-decoration-none text-dark" href="camnangvieclam.php">9 hoạt động giúp khởi đầu năm mới thuận lợi</a></div>
+        </div>
+      </div>
 
+      <div class="col-6 col-md-4">
+        <div class="border">
+          <a href="cv.php"><img class="img-fluid hot-job__logo mr-2 mr-sm-3 border-0" src="https://cl-wpml.s3.ap-southeast-1.amazonaws.com/cam-nang-viec-lam/wp-content/uploads/2023/10/30114202/portrait-beautiful-young-asian-business-woman-with-headphone-call-center2.jpg" /></a>
+          <div class="h6 ms-1"><a class="text-decoration-none" href="cv.php">Viết CV / Resume</a></div>
+          <div class="h4 ms-1"><a class="text-decoration-none text-dark" href="cv.php">Giải đáp thắc mắc về thư xin việc</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <hr />
   <?php

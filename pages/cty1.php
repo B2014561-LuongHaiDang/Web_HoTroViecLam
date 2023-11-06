@@ -3,7 +3,7 @@ session_start();
 include('config/config.php');
 $id = $_GET['id'];
 
-$sql = "SELECT * FROM tbl_thongtintuyendung WHERE tencongty=? and da_duyet=1";
+$sql = "SELECT * FROM tbl_thongtintuyendung WHERE tencongty=?  and da_duyet=1";
 $ketqua = $conn->prepare($sql);
 $ketqua->execute([$id]);
 $ketqua = $ketqua->fetchAll(PDO::FETCH_ASSOC);
@@ -89,11 +89,10 @@ $ketqua = $ketqua->fetchAll(PDO::FETCH_ASSOC);
         <div class="border bg-body text-body">
           <div class="row">
             <div class=" col-sm-6 col-md-2" style="display: grid; place-items: center;">
-              <!-- <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white" style="width: 105px; height: 107px" src="" /> -->
               <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white" src="<?= $cty['images'] ?>" />
             </div>
             <div class="col-sm-6 col-md-10 ">
-            <div class="" style="padding-top:10px"><a class="text-decoration-none text-dark h5 fw-bold " href="cty1.php"><?= $cty['vitri_tuyendung'] ?></a></div>
+            <div class="" style="padding-top:10px"><a class="text-decoration-none text-dark h5 fw-bold " href=""><?= $cty['vitri_tuyendung'] ?></a></div>
               <div class=""><a class=" text-decoration-none text-dark h6 " href="cty1.php?id=<?= $cty['tencongty'] ?>"><?= $cty['tencongty'] ?></a></div>
               <div class=""><a class="text-decoration-none text-dark h6 " href=""><?= $cty['vitri_congty'] ?></a></div>
               <div class=""><a class="text-decoration-none text-danger h6 fw-bold" href="">Lương: <?= $cty['mucluong_tuyendung'] ?></a></div>
@@ -139,75 +138,9 @@ $ketqua = $ketqua->fetchAll(PDO::FETCH_ASSOC);
   </div>
   <?php endforeach ?>
   <hr />
-  <div class="text-center" style="background-color:#e0d8d8 ; padding-bottom:50px;padding-top:50px;">
-    <div class="row">
-
-      <div class="col-sm-4 col-md-4 h4">Về hỗ trợ việc làm
-        <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Về chúng tôi</a>
-        </div>
-        <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Liên hệ</a>
-        </div>
-        <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Thỏa thuận người dùng</a>
-        </div>
-      </div>
-
-      <div class="col-sm-4 col-md-4 h4">Dành cho ứng viên
-        <div class="h5 ms-2"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Việc làm</a>
-        </div>
-        <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Cẩm nang xin việc</a>
-        </div>
-        <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Mẫu CV xin việc</a>
-        </div>
-      </div>
-
-      <div class="col-sm-4 col-md-4 h4">Việc làm theo khu vực
-        <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Hồ Chí Minh</a>
-        </div>
-        <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Cần Thơ</a>
-        </div>
-        <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Bạc Liêu</a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="row">
-
-      <div class="col-sm-4 col-md-4 h4">Chứng nhận
-        <div>
-          <img class="img-fluid" src="images/chungnhan.png" />
-        </div>
-      </div>
-      <div class="col-sm-4 col-md-4 h4">Dành cho nhà tuyển dụng
-        <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Dịch vụ</a>
-        </div>
-        <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Cẩm nang tuyển dụng</a>
-        </div>
-      </div>
-      <div class="col-sm-4 col-md-4 h4">Việc làm theo ngành nghề
-        <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Quản trị kinh doanh</a>
-        </div>
-        <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Kế toán</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <?php
+  include "../code/footer.php";
+  ?>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>

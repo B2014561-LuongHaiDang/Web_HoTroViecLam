@@ -1,11 +1,4 @@
-<?php
-session_start();
-include('config/config.php');
-$sql = "select * from tbl_thongtintuyendung where da_duyet=1";
-$ketqua = $conn->prepare($sql);
-$ketqua->execute();
-$ketqua = $ketqua->fetchAll();
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">

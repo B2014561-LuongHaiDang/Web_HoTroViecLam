@@ -18,20 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $ketqua = $ketqua->fetchAll(PDO::FETCH_ASSOC);
   }
   
-};
-// if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-// if (isset($_GET['bt'])) {
-//   $nd = $_GET['khuvuc'];
-
-//   $sql = "SELECT * FROM tbl_thongtintuyendung where vitri_congty like ? and da_duyet=1";
-
-//   $ketqua = $conn->prepare($sql);
-
-//   $ketqua->execute(["%$nd%"]);
-
-//   $ketqua = $ketqua->fetchAll(PDO::FETCH_ASSOC);
-// }
-// };
+}
 
 
 ?>
@@ -53,8 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 <body>
 
   <div>
+  <div class="container">
     <nav class="navbar navbar-expand-lg">
-      <div class="container">
+      
        
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -176,18 +164,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 
 
-  <img style="width: 100%;" src="images/anhdaidien.jpg" alt="">
+  
 
 
 
 
-  <div class="container h3 fw-bold" style="padding-top:25px">Việc làm hấp dẫn</div>
+  <div class="container h4 fw-bold" style="padding-top:25px">Kết quả tìm kiếm
+    <div class="row ">
 
-  <?php
-  include "../code/info.php";
-  ?>
+      <div class="col-sm-6 col-md-8" style="background-color: #f8f9fa;">
+  <?php foreach ($ketqua as $cty) : ?>
+  <div class="border bg-body text-body">
+          <div class="row">
+            <div class=" col-sm-6 col-md-2" style="display: grid; place-items: center;">
+              <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white" src="<?= $cty['images'] ?>" />
+            </div>
+            <div class="col-sm-6 col-md-10 ">
+            <div class="" style="padding-top:10px"><a class="text-decoration-none text-dark h5 fw-bold " href="cty1.php"><?= $cty['vitri_tuyendung'] ?></a></div>
+              <div class=""><a class=" text-decoration-none text-dark h6 " href="cty1.php?id=<?= $cty['tencongty'] ?>"><?= $cty['tencongty'] ?></a></div>
+              <div class=""><a class="text-decoration-none text-dark h6 " href=""><?= $cty['vitri_congty'] ?></a></div>
+              <div class=""><a class="text-decoration-none text-danger h6 fw-bold" href="">Lương: <?= $cty['mucluong_tuyendung'] ?></a></div>
+            </div>
+          </div>
+          
 
-
+        </div>
+        <?php endforeach ?>
+      </div>
+    </div>
+  </div>
   <hr />
 
   <?php
