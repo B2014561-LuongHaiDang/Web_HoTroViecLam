@@ -1,18 +1,30 @@
 <?php
 session_start();
 include('../pages/config/config.php');
-$sql = "select * from tbl_thongtintuyendung where da_duyet=0";
-$ketqua = $conn->query($sql);
+$sql = "select * from tbl_thongtintuyendung where da_duyet=2";
+$ketqua = $conn->prepare($sql);
+$ketqua->execute();
 $ketqua = $ketqua->fetchAll(PDO::FETCH_ASSOC);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['submit'])) {
         $id = $_POST['id'];
+        $sql = "DELETE FROM tbl_thongtintuyendung WHERE id_thongtintuyendung=?";
+        $ketqua = $conn->prepare($sql);
+        $ketqua->execute([$id]);
+        header("Location:da_xoa.php");
+        
+    }
+};
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['restore'])) {
+        $id = $_POST['id_restore'];
         $sql = "UPDATE tbl_thongtintuyendung SET da_duyet=1  where id_thongtintuyendung=?";
         $ketqua = $conn->prepare($sql);
         $ketqua->execute([$id]);
-        header("Location:add.php");
+        header("Location:da_xoa.php");
     }
 };
+
 ?>
 
 
@@ -30,14 +42,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <div class="h1 text-center text-danger mt-3">THÔNG TIN CẦN ĐƯỢC DUYỆT</div>
-        
-        <a href="index.php"><input type="submit" name="submit" class="" value="Trở lại giao diện chính"></a>
+    <div class="h1 text-center text-dark mt-3">THÔNG TIN ĐÃ BỊ XÓA</div>
+    <a href="index.php"><input type="submit" name="submit" class="" value="Trở lại giao diện chính"></a>
     <div class="d-flex justify-content-end me-3 mt-3">
+        <a href="add.php"><input type="submit" name="submit" class="btn btn-danger" value="Duyệt thông tin"></a>
         <a href="delete.php"><input type="submit" name="delete" class="btn btn-warning" value="Xóa thông tin"></a>
-        <a href="da_xoa.php"><input type="submit" name="deleted" class="btn btn-dark ms-1" value="Đã xóa"></a>
     </div>
- 
 
 
     <div class="container" style="padding-top:25px">
@@ -56,8 +66,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <div class=""><a class="text-decoration-none text-dark h6 " href=""><?= $cty['vitri_congty'] ?></a></div>
                             <div class=""><a class="text-decoration-none text-danger h6 fw-bold" href="">Lương: <?= $cty['mucluong_tuyendung'] ?></a></div>
 
-                            <form method="POST"><input type="submit" name="submit" class="btn btn-outline-danger" value="Duyệt"><input type="hidden" name="id" value="<?= $cty['id_thongtintuyendung'] ?>"></form>
-
+                            <form method="POST">
+                                <input type="submit" name="submit" class="btn btn-outline-dark" value="Xóa vĩnh viễn"><input type="hidden" name="id" value="<?= $cty['id_thongtintuyendung'] ?>">
+                                <input type="submit" name="restore" class="btn btn-outline-dark" value="Khôi phục"><input type="hidden" name="id_restore" value="<?= $cty['id_thongtintuyendung'] ?>">
+                            </form>
+                            
                         </div>
                     </div>
                 </div>

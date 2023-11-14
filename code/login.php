@@ -29,7 +29,7 @@
 
                             <div class="mb-3 form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Đồng ý các quy định của chúng tôi</label>
+                                <label class="form-check-label" for="exampleCheck1">Đồng ý các <a href="../thoathuannguoidung.php">quy định</a> của chúng tôi</label>
                             </div>
 
 

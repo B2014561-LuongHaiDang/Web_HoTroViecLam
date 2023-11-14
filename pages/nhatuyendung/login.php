@@ -1,23 +1,31 @@
 <?php
-
-
 session_start();
 include('../config/config.php');
 if (isset($_POST['login'])) {
-
     $email = $_POST['email'];
     $matkhau = md5($_POST['matkhau']);
-    $sql = "SELECT * FROM tbl_dangky_nhatuyendung WHERE email='" . $email . "'AND matkhau='" . $matkhau . "' LIMIT 1";
-    $ketqua = $conn->query($sql);
-    $ketqua = $ketqua->fetchAll(PDO::FETCH_ASSOC);
-
+    $sql = "SELECT * FROM tbl_dangky_nhatuyendung WHERE email=? AND matkhau=? LIMIT 1";
+    $ketqua = $conn->prepare($sql);
+    $ketqua->execute([$email, $matkhau]);
+    $ketqua = $ketqua->fetch(PDO::FETCH_ASSOC);
     if ($ketqua) {
-        $_SESSION['tencongty'] = $ketqua[0]['tencongty'];
-        header("Location:http://localhost/web_mysqli/pages/index.php");
+        $_SESSION['tencongty'] = $ketqua['tencongty'];
+        header("Location:../index.php");
+        exit;
     } else {
-        echo '<script language="javascript">';
-        echo 'alert("Tài khoản hoặc mật khẩu không đúng")';
-        echo '</script>';
+        echo '
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+        swal({
+        type: "error",
+        title: "Email hoặc mật khẩu không đúng",
+        icon: "error",
+        showConfirmButton: true,
+        })
+        });
+        </script>';
     }
 }
 
@@ -94,7 +102,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
             });
         });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
 </body>
 
 </html>

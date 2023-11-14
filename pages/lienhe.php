@@ -5,24 +5,21 @@ include('config/config.php');
 if (isset($_POST['dangky'])) {
     $ten = $_POST['name'];
     $email = $_POST['email'];
-    $tencongty = $_POST['tencongty'];
-    $diachi = $_POST['diachi'];
-    $sdt = $_POST['dienthoai'];
     $nhanxet = $_POST['nhanxet'];
-    $sql = "INSERT INTO tbl_phanhoikhachhang(ten,email,tencongty,diachi,sdt,nhanxet) VALUE(?,?,?,?,?,?)";
+    $sql = "INSERT INTO tbl_phanhoikhachhang(ten,email,nhanxet) VALUE(?,?,?)";
     $ketqua = $conn->prepare($sql);
-    $ketqua->execute([$ten, $email, $tencongty, $diachi, $sdt, $nhanxet]);
+    $ketqua->execute([$ten, $email, $nhanxet]);
     if ($ketqua) {
         echo '
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script type="text/javascript">
         $(document).ready(function(){
-        swal({       
+        swal({
         type: "success",
         title: "Gửi phản hồi thành công",
         icon: "success",
-        showConfirmButton: true,        
+        showConfirmButton: true,
         })
         });
         </script>';
@@ -133,25 +130,7 @@ if (isset($_POST['dangky'])) {
                                     <!-- Email -->
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Email<span style="color:red">*</span></label>
-                                        <input type="email" class="form-control" id="" name="email">
-                                    </div>
-
-                                    <!-- Tên công ty -->
-                                    <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Tên công ty</label>
-                                        <input type="text" class="form-control" id="" name="tencongty">
-                                    </div>
-
-                                    <!-- Địa chỉ -->
-                                    <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Địa chỉ</label>
-                                        <input type="text" class="form-control" id="" name="diachi">
-                                    </div>
-
-                                    <!-- Số điện thoại -->
-                                    <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Số điện thoại</label>
-                                        <input type="text" class="form-control" id="" name="dienthoai">
+                                        <input type="email" class="form-control" id="" name="email" placeholder="Email để chúng tôi liên hệ với bạn">
                                     </div>
 
                                     <!-- Nhận xét -->
@@ -178,7 +157,7 @@ if (isset($_POST['dangky'])) {
                 rules: {
                     name: {
                         required: true,
-                        minlength: 1
+                        minlength: 2
                     },
                     email: {
                         required: true,
@@ -193,9 +172,13 @@ if (isset($_POST['dangky'])) {
                 messages: {
 
                     name: {
-                        required: 'Bạn chưa nhập vào tên của bạn',
+                        required: 'Bạn chưa nhập tên',
+                        minlength: 'Tối thiếu 2 ký tự'
                     },
-                    email: 'Hộp thư điện tử không hợp lệ',
+                    email:{
+                        required: 'Bạn chưa nhập email',
+                        email: 'Hộp thư điện tử không hợp lệ'
+                    },
                     nhanxet: {
                         required: 'Vui lòng nhập nhận xét của bạn',
                         minlength: 'Tối thiểu 1 kí tự',

@@ -10,15 +10,31 @@ if (isset($_POST['dangky'])) {
     $sonhanvien = $_POST['sonhanvien'];
     $hotline = $_POST['hotline'];
     $diachi = $_POST['diachi'];
+    $sql1 = "SELECT * FROM tbl_dangky_nhatuyendung WHERE email = ?";
+    $ketqua1 = $conn->prepare($sql1);
+    $ketqua1->execute([$email]);
+    if ($ketqua1->rowCount() > 0) {
+        echo '
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+        swal({
+        type: "error",
+        title: "Email đã tồn tại!!!",
+        icon: "error",
+        showConfirmButton: true,
+        })
+        });
+        </script>';
+    } else {
     $sql = "INSERT INTO tbl_dangky_nhatuyendung(email,matkhau,tencongty,sonhanvien,sodienthoai,diachi) VALUE(?,?,?,?,?,?)";
     $ketqua = $conn->prepare($sql);
     $ketqua->execute([$email, $matkhau, $tencongty, $sonhanvien, $hotline, $diachi]);
-    if ($ketqua) {
-        $_SESSION['tencongty'] = $ketqua['tencongty'];
-        header("Location:http://localhost/web_mysqli/pages/index.php");
-    }
+    $_SESSION['tencongty'] = $tencongty;
+    header("Location:http://localhost/web_mysqli/pages/index.php");
 }
-
+}
 ?>
 
 
@@ -96,7 +112,7 @@ if (isset($_POST['dangky'])) {
 
                             <div class="form-group form-check mb-3">
                                 <input class="form-check-input" type="checkbox" id="agree" name="agree" value="agree" />
-                                <label class="form-check-label" for="agree">Đồng ý các quy định của chúng tôi</label>
+                                <label class="form-check-label" for="agree">Đồng ý các <a href="../thoathuannguoidung.php">quy định</a> của chúng tôi</label>
                             </div>
 
                             <div class="d-grid">

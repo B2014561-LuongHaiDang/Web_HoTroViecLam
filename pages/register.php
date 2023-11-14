@@ -1,23 +1,37 @@
 <?php
 session_start();
 include('config/config.php');
-
 if (isset($_POST['dangky'])) {
-
     $tenkhachhang = $_POST['tenkhachhang'];
     $email = $_POST['email'];
     $diachi = $_POST['diachi'];
     $dienthoai = $_POST['dienthoai'];
     $matkhau = md5($_POST['matkhau']);
-    $sql = "INSERT INTO tbl_dangky_nguoitimviec(tenkhachhang,email,diachi,dienthoai,matkhau) VALUE(?,?,?,?,?)";
+    $sql1 = "SELECT * FROM tbl_dangky_nguoitimviec WHERE email = ?";
+    $ketqua1 = $conn->prepare($sql1);
+    $ketqua1->execute([$email]);
+    if ($ketqua1->rowCount() > 0) {
+        echo '
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+        swal({
+        type: "error",
+        title: "Email đã tồn tại!!!",
+        icon: "error",
+        showConfirmButton: true,
+        })
+        });
+        </script>';
+    } else {
+    $sql = "INSERT INTO tbl_dangky_nguoitimviec(tenkhachhang,email,diachi,dienthoai,matkhau)VALUES(?,?,?,?,?) ";
     $ketqua = $conn->prepare($sql);
     $ketqua->execute([$tenkhachhang, $email, $diachi, $dienthoai, $matkhau]);
-    if ($ketqua) {
-        $_SESSION['tenkhachhang'] = $ketqua['tenkhachhang'];
-        header("Location:index.php");
-    }
+    $_SESSION['tenkhachhang'] = $tenkhachhang;
+    header("Location:index.php");
 }
-
+}
 ?>
 
 
@@ -50,7 +64,7 @@ if (isset($_POST['dangky'])) {
                         <form id="signupForm" method="POST" class="form-horizontal" action="">
                             <!-- Họ và tên -->
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Tên công ty</label>
+                                <label for="exampleInputEmail1" class="form-label">Tên của bạn</label>
                                 <input type="text" class="form-control" id="" name="tenkhachhang">
                             </div>
 
@@ -81,7 +95,7 @@ if (isset($_POST['dangky'])) {
                             <!-- Checkbox -->
                             <div class="form-group form-check mb-3">
                                 <input class="form-check-input" type="checkbox" id="agree" name="agree" value="agree" />
-                                <label class="form-check-label" for="agree">Đồng ý các quy định của chúng tôi</label>
+                                <label class="form-check-label" for="agree">Đồng ý các <a href="thoathuannguoidung.php">quy định</a> của chúng tôi</label>
                             </div>
 
                             <div class="d-grid">
@@ -106,11 +120,6 @@ if (isset($_POST['dangky'])) {
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
     <script type="text/javascript">
-        // $.validator.setDefaults({
-        //     submitHandler: function () {
-        //         alert('Đăng kí thành công!');
-        //     },
-        // });
         $(document).ready(function() {
             $('#signupForm').validate({
                 rules: {

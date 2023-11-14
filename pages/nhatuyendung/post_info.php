@@ -8,11 +8,11 @@ if (isset($_POST['dangky_post_info'])) {
     $tencongty_post_info = $_POST['tencongty_post_info'];
     $diachi_post_info = $_POST['diachi_post_info'];
     $mucluong = $_POST['mucluong'];
-    $image = $_POST['image'];
+    $images = $_POST['images'];
     $link = $_POST['link'];
     $sql = "INSERT INTO tbl_thongtintuyendung(vitri_tuyendung,tencongty,vitri_congty,mucluong_tuyendung, images, link) VALUE(?,?,?,?,?,?)";
     $ketqua = $conn->prepare($sql);
-    $ketqua->execute([$vitri_post_info, $tencongty_post_info, $diachi_post_info, $mucluong, $image, $link]);
+    $ketqua->execute([$vitri_post_info, $tencongty_post_info, $diachi_post_info, $mucluong, $images, $link]);
     header("Location:http://localhost/web_mysqli/pages/index.php");
 }
 
@@ -75,7 +75,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
 
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Logo công ty</label>
-                                <input type="text" class="form-control" id="" name="image">
+                                <input type="text" class="form-control" id="" name="images">
                             </div>
 
                             <div class="mb-3">

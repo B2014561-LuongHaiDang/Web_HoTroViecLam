@@ -1,18 +1,27 @@
 <?php
 session_start();
 include('../pages/config/config.php');
-$sql = "select * from tbl_thongtintuyendung where da_duyet=1";
-$ketqua = $conn->query($sql);
+$sql = "SELECT * from tbl_thongtintuyendung where da_duyet=1";
+$ketqua = $conn->prepare($sql);
+$ketqua->execute();
 $ketqua = $ketqua->fetchAll(PDO::FETCH_ASSOC);
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    if(isset($_POST['delete'])){
-        $id=$_POST['id'];
-        $sql="UPDATE tbl_thongtintuyendung SET da_duyet=0  where id_thongtintuyendung=?";
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['delete'])) {
+        $id = $_POST['id'];
+        $sql = "UPDATE tbl_thongtintuyendung SET da_duyet=2  where id_thongtintuyendung=?";
         $ketqua = $conn->prepare($sql);
         $ketqua->execute([$id]);
         header("Location:delete.php");
+        if ($ketqua) {
+            $id = $_POST['id'];
+            $sql = "DELETE FROM thongtintuyendung WHERE created_at < adddate(now(),-7)) and id_thongtintuyendung=?";
+            $ketqua = $conn->prepare($sql);
+            $ketqua->execute([$id]);
+            $ketqua = $ketqua->fetch(PDO::FETCH_ASSOC);
+        }
     }
 };
+
 ?>
 
 
@@ -30,13 +39,18 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 </head>
 
 <body>
-    <div><a href="index.php">Quay lại</a></div>
+    <div class="h1 text-center text-warning mt-3">XÓA THÔNG TIN</div>
+    <a href="index.php"><input type="submit" name="submit" class="" value="Trở lại giao diện chính"></a>
+    <div class="d-flex justify-content-end me-3 mt-3">
+        <a href="add.php"><input type="submit" name="submit" class="btn btn-danger" value="Duyệt thông tin"></a>
+        <a href="da_xoa.php"><input type="submit" name="deleted" class="btn btn-dark ms-1" value="Đã xóa"></a>
+    </div>
 
 
     <div class="container" style="padding-top:25px">
         <div class="row">
             <?php foreach ($ketqua as $cty) : ?>
-                
+
                 <div class=" col-md-4 border">
                     <div class="row">
                         <div class="col-sm-6 col-md-3" style="display: grid; place-items: center;">
@@ -44,13 +58,17 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                         </div>
 
                         <div class="col-sm-6 col-md-9 ">
-                            <div class="" style="padding-top:10px"><a class="text-decoration-none text-dark h5 fw-bold " href="company_profile_cty1/cty1.php"><?= $cty['vitri_tuyendung'] ?></a></div>
-                            <div class=""><a class=" text-decoration-none text-dark h6 " href="company_profile_cty1/cty1.php"><?= $cty['tencongty'] ?></a></div>
+                            <div class="" style="padding-top:10px"><a class="text-decoration-none text-dark h5 fw-bold " href=""><?= $cty['vitri_tuyendung'] ?></a></div>
+                            <div class=""><a class=" text-decoration-none text-dark h6 " href=""><?= $cty['tencongty'] ?></a></div>
                             <div class=""><a class="text-decoration-none text-dark h6 " href=""><?= $cty['vitri_congty'] ?></a></div>
                             <div class=""><a class="text-decoration-none text-danger h6 fw-bold" href="">Lương: <?= $cty['mucluong_tuyendung'] ?></a></div>
-                            
-                            <form  method="POST"><input type="submit" name="delete" class="btn btn-outline-dark" value="Xóa"><input type="hidden" name="id" value="<?= $cty['id_thongtintuyendung'] ?>"></form>
-                            
+
+                            <form method="POST">
+                                <input type="submit" name="delete" class="btn btn-outline-warning" value="Xóa"><input type="hidden" name="id" value="<?= $cty['id_thongtintuyendung'] ?>">
+                                <a href="sua.php?id=<?= $cty['id_thongtintuyendung'] ?>" class="btn btn-outline-success">Sửa</a>
+                            </form>
+
+
                         </div>
                     </div>
                 </div>

@@ -13,19 +13,19 @@
       <div class="col-sm-4 col-md-4 h4">Dành cho ứng viên
         <div class="h5 ms-2"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="nganhnghe.php">Việc làm</a>
         </div>
-        <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Cẩm nang xin việc</a>
+        <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="camnangvieclam.php">Cẩm nang xin việc</a>
         </div>
-        <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Mẫu CV xin việc</a>
+        <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="cv.php">Mẫu CV xin việc</a>
         </div>
       </div>
 
       <div class="col-sm-4 col-md-4 h4">Việc làm theo khu vực
-        <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="nganhnghe.php">Hồ Chí Minh</a>
+        <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="nganhnghe.php?nghenghiep=&khuvuc=hồ chí minh&button=">Hồ Chí Minh</a>
         </div>
 
-        <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Cần Thơ</a>
+        <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="nganhnghe.php?nghenghiep=&khuvuc=cần thơ&button=">Cần Thơ</a>
         </div>
-        <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Bạc Liêu</a>
+        <div class="h5"><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="nganhnghe.php?nghenghiep=&khuvuc=bạc liêu&button=">Bạc Liêu</a>
         </div>
       </div>
 

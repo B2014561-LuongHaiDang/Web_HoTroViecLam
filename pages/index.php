@@ -5,6 +5,11 @@ $sql = "select * from tbl_thongtintuyendung where da_duyet=1";
 $ketqua = $conn->prepare($sql);
 $ketqua->execute();
 $ketqua = $ketqua->fetchAll();
+
+$sqlsoluong = "SELECT soluongvieclam() as soluong";
+$ketqua1 = $conn->prepare($sqlsoluong);
+$ketqua1->execute();
+$ketqua1 = $ketqua1->fetch(PDO::FETCH_ASSOC);
 ?>
 
 
@@ -35,7 +40,7 @@ $ketqua = $ketqua->fetchAll();
 
 
 
-  <div class="container h3 fw-bold" style="padding-top:25px">Việc làm hấp dẫn</div>
+  <div class="container h3 fw-bold" style="padding-top:25px">Việc làm hấp dẫn: <?php echo $ketqua1['soluong']; ?> công việc</div>
   <?php
   include "../code/info.php";
   ?>
