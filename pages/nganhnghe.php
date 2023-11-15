@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('config/config.php');
-$sql = "select * from tbl_thongtintuyendung where da_duyet=1";
+$sql = "select * from tbl_thongtintuyendung where da_duyet=1 order by created_at desc";
 $ketqua = $conn->prepare($sql);
 $ketqua->execute();
 $ketqua = $ketqua->fetchAll(PDO::FETCH_ASSOC);
