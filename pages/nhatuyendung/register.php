@@ -59,12 +59,11 @@ if (isset($_POST['dangky'])) {
                 </div>
 
                 <div class="card">
-                    <div class="card-header text-center position-relative">
-                        <!-- <a href="http://localhost/web_mysqli/pages/index.php"><button type="button" class="btn-close position-absolute top-0 end-0 p-2" aria-label="Close"></button></a> -->
+                    <div class="card-header text-center position-relative" style="background-color:deepskyblue">
                         <h3>Đăng ký để bắt đầu đăng việc ngay</h3>
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body" style="background-color:aliceblue">
                         <form id="signupForm" method="POST" class="form-horizontal" action="">
 
                             <!-- Email -->
@@ -116,9 +115,9 @@ if (isset($_POST['dangky'])) {
                             </div>
 
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-primary" name="dangky">Đăng ký</button>
+                                <button type="submit" class="btn btn-outline-info" name="dangky">Đăng ký</button>
                             </div>
-                            <div class="text-center">Quay lại <a href="login.php">Đăng nhập</a></div>
+                            <div class="mt-3 text-center">Quay lại <a href="login.php">Đăng nhập</a></div>
 
                     </div>
                     </form>

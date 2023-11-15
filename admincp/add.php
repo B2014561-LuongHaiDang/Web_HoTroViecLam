@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         <a href="index.php"><input type="submit" name="submit" class="" value="Trở lại giao diện chính"></a>
     <div class="d-flex justify-content-end me-3 mt-3">
-        <a href="delete.php"><input type="submit" name="delete" class="btn btn-warning" value="Xóa thông tin"></a>
+        <a href="delete.php"><input type="submit" name="delete" class="btn btn-warning" value="Sửa-Xóa thông tin"></a>
         <a href="da_xoa.php"><input type="submit" name="deleted" class="btn btn-dark ms-1" value="Đã xóa"></a>
     </div>
  

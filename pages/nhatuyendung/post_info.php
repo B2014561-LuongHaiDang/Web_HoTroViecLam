@@ -35,17 +35,14 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
 <body>
     <div class="">
         <div class="row">
-            <div class="col-sm-6 col-md-4 d-flex align-items-center">
-                <img class=" img-fluid" src="https://dxwd4tssreb4w.cloudfront.net/web/images/pages/login/banner.png" alt="">
-            </div>
-            <div class="col-sm-6 col-md-4">
+            <div class="col-12 col-md-6 offset-md-3">
 
-                <div class="card">
-                    <div class="card-header text-center position-relative alert alert-info">
+                <div class="card mt-3">
+                    <div class="card-header text-center" style="background-color:deepskyblue">
                         <h3>Nhập thông tin tuyển dụng</h3>
                     </div>
 
-                    <div class="card-body ">
+                    <div class="card-body" style="background-color:aliceblue">
                         <form id="signupForm" method="POST" class="form-horizontal" action="">
 
                             <!-- Vị trí cần tuyển -->
@@ -79,19 +76,18 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
                             </div>
 
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Link web công ty</label>
+                                <label for="exampleInputEmail1" class="form-label">Link web công ty(Nếu có)</label>
                                 <input type="text" class="form-control" id="" name="link">
                             </div>
 
                             <div class="">
                                 <div class="d-grid">
-                                    <button type="submit" class="btn btn-primary" name="dangky_post_info">Đăng thông tin</button>
+                                    <button type="submit" class="btn btn-outline-info" name="dangky_post_info">Đăng thông tin</button>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-4"></div>
             </div>
         </div>
     </div>

@@ -56,11 +56,11 @@ if (isset($_POST['dangky'])) {
                 </div>
 
                 <div class="card">
-                    <div class="card-header text-center position-relative">
+                    <div class="card-header text-center"  style="background-color:deepskyblue">
 
                         <h3>Đăng ký thành viên</h3>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" style="background-color:aliceblue">
                         <form id="signupForm" method="POST" class="form-horizontal" action="">
                             <!-- Họ và tên -->
                             <div class="mb-3">
@@ -99,10 +99,10 @@ if (isset($_POST['dangky'])) {
                             </div>
 
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-primary" name="dangky">Đăng ký</button>
+                                <button type="submit" class="btn btn-outline-info" name="dangky">Đăng ký</button>
                             </div>
 
-                            <div class="text-center">Quay lại <a href="login.php">Đăng nhập</a></div>
+                            <div class="mt-3 text-center">Quay lại <a href="login.php">Đăng nhập</a></div>
                         </form>
                     </div>
                 </div>

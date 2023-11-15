@@ -45,17 +45,17 @@ if (isset($_POST['login'])) {
         <div class="row">
             <div class="col-sm-8 offset-sm-2">
                 <div class="mt-2">
-                    <div class="alert alert-info text-center " role="alert">
+                    <div class="alert alert-info text-center" role="alert">
                         <h4>Vui lòng đăng nhập tại đây!</h4>
                     </div>
                 </div>
 
                 <div class="card">
-                    <div class="card-header text-center bg-secondary-subtle text-emphasis-secondary">
+                    <div class="card-header text-center" style="background-color:deepskyblue">
                         <a href="http://localhost/web_mysqli/pages/index.php"><button type="button" class="btn-close position-absolute top-0 end-0 p-3" aria-label="Close"></button></a>
                         <h3>Đăng nhập</h3>
                     </div>
-                    <div class="card-body ">
+                    <div class="card-body" style="background-color:aliceblue">
                         <form id="signupForm" method="post" class="form-horizontal" action="#">
 
 
@@ -77,11 +77,11 @@ if (isset($_POST['login'])) {
 
 
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-primary" name="login">Đăng nhập</button>
+                                <button type="submit" class="btn btn-outline-info" name="login">Đăng nhập</button>
                             </div>
 
-                            <div class="text-center"><a href="">Quên mật khẩu</a></div>
-                            <div class="text-center">Nếu chưa có tài khoản vui lòng <a href="register.php">Đăng kí</a></div>
+                            
+                            <div class="mt-3 text-center">Nếu chưa có tài khoản vui lòng <a href="register.php">Đăng kí</a></div>
 
                         </form>
                     </div>

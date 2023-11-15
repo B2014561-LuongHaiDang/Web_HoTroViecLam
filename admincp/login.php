@@ -35,11 +35,11 @@ if (isset($_POST['login'])) {
                 </div>
 
                 <div class="card">
-                    <div class="card-header text-center bg-secondary-subtle text-emphasis-secondary">
+                    <div class="card-header text-center" style="background-color:deepskyblue">
                         <a href="http://localhost/web_mysqli/pages/index.php"><button type="button" class="btn-close position-absolute top-0 end-0 p-3" aria-label="Close"></button></a>
                         <h3>Đăng nhập</h3>
                     </div>
-                    <div class="card-body ">
+                    <div class="card-body " style="background-color:aliceblue">
                         <form id="signupForm" method="post" class="form-horizontal" action="#">
 
 
@@ -58,7 +58,7 @@ if (isset($_POST['login'])) {
 
 
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-primary" name="login">Đăng nhập</button>
+                                <button type="submit" class="btn btn-outline-info" name="login">Đăng nhập</button>
                             </div>
 
 

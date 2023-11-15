@@ -19,7 +19,7 @@ if (isset($_POST['capnhat'])) {
     $sql = "CALL suavieclam( '$id','$vitri_tuyendung', '$tencongty', '$vitri_congty', '$mucluong_tuyendung', '$images', '$link')";
     $ketqua = $conn->prepare($sql);
     $ketqua->execute();
-    header("Location: index.php");
+    header("Location: delete.php");
 }
 
 
@@ -69,7 +69,8 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
 
             <div class=" mb-3">
                 <label for="exampleInputEmail1" class="form-label">Logo công ty</label>
-                <input type="file" id="" name="images" value="<?= htmlspecialchars($ketqua['images']) ?>">
+                <input type="file"  id="" name="images" value="<?= htmlspecialchars($ketqua['images']) ?>">
+                <input type="text" class="form-control" id="" name="images" value="<?= htmlspecialchars($ketqua['images']) ?>">
             </div>
 
             <div class=" mb-3">

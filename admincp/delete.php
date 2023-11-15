@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <div class="h1 text-center text-warning mt-3">XÓA THÔNG TIN</div>
+    <div class="h1 text-center mt-3"><span class="text-success">SỬA-<span class="text-warning">XÓA THÔNG TIN</span></div>
     <a href="index.php"><input type="submit" name="submit" class="" value="Trở lại giao diện chính"></a>
     <div class="d-flex justify-content-end me-3 mt-3">
         <a href="add.php"><input type="submit" name="submit" class="btn btn-danger" value="Duyệt thông tin"></a>
