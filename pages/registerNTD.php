@@ -1,9 +1,7 @@
 <?php
 session_start();
-include('../config/config.php');
-
+include('config/config.php');
 if (isset($_POST['dangky'])) {
-
     $email = $_POST['email'];
     $matkhau = md5($_POST['matkhau']);
     $tencongty = $_POST['tencongty'];
@@ -32,7 +30,7 @@ if (isset($_POST['dangky'])) {
         $ketqua = $conn->prepare($sql);
         $ketqua->execute([$email, $matkhau, $tencongty, $sonhanvien, $hotline, $diachi]);
         $_SESSION['tencongty'] = $tencongty;
-        header("Location:http://localhost/web_mysqli/pages/index.php");
+        header("Location:index.php");
     }
 }
 ?>
@@ -50,65 +48,16 @@ if (isset($_POST['dangky'])) {
 </head>
 
 <body>
-<div class="border">
-  <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand fw-bold ms-2" style="color:blue">Hỗ trợ việc làm</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse bg-white" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="../index.php"><i class="fa-solid fa-house text-secondary me-1"></i>Trang chủ</a>
-        </li>
-      </ul>
-      <div class="d-flex align-items-center me-3">
-        <a class="nav-link active" aria-current="page" href="../nganhnghe.php">
-          <i class="fa-solid fa-magnifying-glass text-secondary me-1"></i>
-          Ngành nghề/Khu vực
-        </a>
-      </div>
-      <div class="d-flex align-items-center me-3">
-        <a class="nav-link active" aria-current="page" href="../camnangvieclam.php">
-          <i class="fa-solid fa-book text-secondary me-1"></i>
-          Cẩm nang tìm việc
-        </a>
-      </div>
-      <div class="d-flex align-items-center me-3">
-        <a class="nav-link active" aria-current="page" href="../cv.php">
-          <i class="fa-solid fa-receipt text-secondary me-1"></i>
-          Mẫu CV xin việc
-        </a>
-      </div>
-      
-      <div class="d-flex align-items-center me-3">
-        <?php
-        if ((isset($_SESSION['tenkhachhang'])) || (isset($_SESSION['tencongty']))) {
-          if ((isset($_SESSION['tenkhachhang']))) {
-            echo "<span><a class='text-decoration-none ms-1 text-capitalize fw-bold' style='color:red'>" . $_SESSION['tenkhachhang'] . "</a></span>";
-          } else {
-            echo "<span class='text-capitalize fw-bold' style='color:red'>" . $_SESSION['tencongty'] . " </span>";
-            echo '<span><a class="text-decoration-none text-dark ms-3" href="nhatuyendung/post_info.php"><i class="fa-regular fa-paste text-secondary"></i>Đăng tin tuyển dụng</a></span>';
-          }
-          echo '<span><a class="text-decoration-none text-dark ms-3" href="logout.php"><i class="fa-solid fa-right-from-bracket text-success"></i>Đăng xuất</a></span>';
-        } else {
-          echo '<div><a class="text-decoration-none text-dark " href="login.php"><i class="fa-solid fa-user text-secondary"></i> Người tìm việc</a></div>';
-          echo '<div><a class="text-decoration-none text-dark ms-3 " href="#"><i class="fa-solid fa-building text-secondary me-1"></i>Nhà tuyển dụng</a></div>';
-        }
-        ?>
-        <div><a class="text-decoration-none text-dark ms-3 " href="../admincp/login.php"><i class="fa-solid fa-user-gear text-secondary me-1"></i>Admin</a></div>
-      </div>
-    </div>
-  </nav>
-</div>
+<?php
+  include "../code/head.php";
+  ?>
 
     <div class="">
         <div class="row">
             <div class="col-md-7 d-none d-md-block">
                 <div class="text-center h2" style="padding-top: 100px;">Nơi uy tín cho bạn bắt đầu tuyển dụng</div>
                 <div style="display: grid; place-items: center;">
-                <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 "src="../images/login_NTD1.png" alt="">
+                <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 "src="images/login_NTD1.png" alt="">
                 </div>
             </div>
             <div class="col-md-5">
@@ -140,7 +89,7 @@ if (isset($_POST['dangky'])) {
                             </div>
 
 
-                            <div class="text-center h4" style="">Thông tin công ty</div>
+                            <div class="text-center h4">Thông tin công ty</div>
 
 
                             <!-- Tên công ty -->

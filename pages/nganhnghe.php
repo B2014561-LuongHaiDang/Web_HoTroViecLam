@@ -24,16 +24,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $(document).ready(function(){
         swal({
         type: "error",
-        title: "Không có",
-        icon: "error",
+        title: "Không tìm thấy",
+        icon: "info",
         showConfirmButton: true,
         })
         });
         </script>';
-      $sql = "select * from tbl_thongtintuyendung where da_duyet=1";
-      $ketqua = $conn->prepare($sql);
-      $ketqua->execute();
-      $ketqua = $ketqua->fetchAll(PDO::FETCH_ASSOC);
     }
   }
 }
@@ -56,27 +52,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 </head>
 
 <body>
-<?php
+  <?php
   include "../code/head.php";
   ?>
-  
-
-
 
   <div class="container d-flex align-items-center mt-3">
     <form method="GET">
-      <input style="height: 36px;" type="text" name="nghenghiep" placeholder="Nhập tên công việc"/>
-      <input style="height: 36px;" type="text" name="khuvuc" class="ms-1" placeholder="Nhập tỉnh/thành phố"/>
+      <input style="height: 36px;" type="text" name="nghenghiep" placeholder="Nhập tên công việc" />
+      <input style="height: 36px;" type="text" name="khuvuc" class="ms-1" placeholder="Nhập tỉnh/thành phố" />
       <button type="submit" name="button" class="btn btn-primary ms-1" style="height: 35px; margin-bottom:6px">Tìm kiếm</button>
     </form>
   </div>
 
-
-
   <div class="container">
     <div class=" h4 fw-bold mb-2" style="padding-top:25px">Kết quả tìm kiếm</div>
-    <div class="row ">
-
+    <div class="row">
       <div class="col-12 col-md-8" style="background-color: #f8f9fa;">
         <?php foreach ($ketqua as $cty) : ?>
           <div class="border bg-body text-body mb-2">
@@ -91,8 +81,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 <div class=""><a class="text-decoration-none text-danger h6 fw-bold" href="">Lương: <?= $cty['mucluong_tuyendung'] ?></a></div>
               </div>
             </div>
-
-
           </div>
         <?php endforeach ?>
       </div>

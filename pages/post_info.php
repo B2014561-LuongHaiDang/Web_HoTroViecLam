@@ -1,7 +1,8 @@
 <?php
 session_start();
-include('../config/config.php');
+include('config/config.php');
 $created_at=time();
+if(isset($_SESSION['tencongty'])) {
 if (isset($_POST['dangky_post_info'])) {
     $vitri_post_info = $_POST['vitri_post_info'];
     $tencongty_post_info = $_POST['tencongty_post_info'];
@@ -15,7 +16,23 @@ if (isset($_POST['dangky_post_info'])) {
     $sql = "INSERT INTO tbl_thongtintuyendung(vitri_tuyendung,tencongty,vitri_congty,mucluong_tuyendung, images, link,expired_at) VALUE(?,?,?,?,?,?,?)";
     $ketqua = $conn->prepare($sql);
     $ketqua->execute([$vitri_post_info, $tencongty_post_info, $diachi_post_info, $mucluong, $images, $link, $expired_at_format]);
-    header("Location:http://localhost/web_mysqli/pages/index.php");
+    if ($ketqua) {
+        echo '
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+        swal({
+        type: "error",
+        title: "Đã gửi thông tin đến admin , vui lòng chờ admin duyệt",
+        icon: "info",
+        showConfirmButton: true,
+        })
+        });
+        </script>';
+        header("refresh:2;url=index.php");
+        exit;
+    }
 }
 ?>
 
@@ -28,9 +45,7 @@ if (isset($_POST['dangky_post_info'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng thông tin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link href="
-https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
-" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -73,8 +88,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
 
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Logo công ty</label>
-                                <input type="text" class="form-control" id="" name="images">
-
+                                <input type="file" class="form-control" id="" name="images">
                             </div>
 
 
@@ -106,7 +120,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
 
     <hr />
     <?php
-    include "../../code/footer.php";
+    include "../code/footer.php";
     ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
@@ -114,3 +128,6 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
 </body>
 
 </html>
+<?php } else {
+    header('location:login.php');
+} ?>

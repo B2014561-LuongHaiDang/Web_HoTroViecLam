@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('../pages/config/config.php');
-if(isset($_SESSION['loginAD'])){
+if(isset($_SESSION['username'])){
 $id = $_GET['id'];
 $sql = "SELECT * FROM tbl_phanhoikhachhang WHERE id_phanhoikhachhang = ?";
 $stmt = $conn->prepare($sql);
@@ -21,7 +21,6 @@ if (isset($_POST['reply'])) {
         $ketqua->execute([$id]);
         $ketqua = $ketqua->fetch(PDO::FETCH_ASSOC);
     }
-}
 }
 ?>
 <!DOCTYPE html>
@@ -67,3 +66,6 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
 </body>
 
 </html>
+<?php } else {
+    header('location:login.php');
+} ?>

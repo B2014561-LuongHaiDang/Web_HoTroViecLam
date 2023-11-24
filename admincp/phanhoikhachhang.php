@@ -1,12 +1,11 @@
 <?php
 session_start();
 include('../pages/config/config.php');
-if(isset($_SESSION['loginAD'])){
-$sql = "select * from tbl_phanhoikhachhang where gia_tri=0";
-$ketqua = $conn->prepare($sql);
-$ketqua->execute();
-$ketqua = $ketqua->fetchAll();
-}
+if (isset($_SESSION['username'])) {
+    $sql = "select * from tbl_phanhoikhachhang where gia_tri=0";
+    $ketqua = $conn->prepare($sql);
+    $ketqua->execute();
+    $ketqua = $ketqua->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -18,11 +17,17 @@ $ketqua = $ketqua->fetchAll();
     <title>Phản hồi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
+    <div class="d-flex justify-content-end mt-2">
+        <div><a class="text-decoration-none text-dark me-5" href="login.php"><i class="fa-solid fa-right-from-bracket text-secondary"></i>Đăng xuất</a></div>
+    </div>
     <div class="h1 text-center text-info mt-3">PHẢN HỒI KHÁCH HÀNG</div>
-    <a href="index.php"><input type="submit" name="submit" class="" value="Trở lại giao diện chính"></a>
+    <div class="ms-2 mt-3">
+        <a href="index.php"><input type="submit" name="delete" class="mt-1" value="Trở lại giao diện chính"></a>
+    </div>
     <div class="row mt-2">
 
         <div class="col-10 col-md-10 offset-1">
@@ -56,3 +61,6 @@ $ketqua = $ketqua->fetchAll();
 </body>
 
 </html>
+<?php } else {
+    header('location:login.php');
+} ?>

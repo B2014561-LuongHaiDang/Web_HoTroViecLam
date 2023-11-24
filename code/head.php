@@ -33,19 +33,27 @@
       <div class="d-flex align-items-center me-3">
         <?php
         if ((isset($_SESSION['tenkhachhang'])) || (isset($_SESSION['tencongty']))) {
-          if ((isset($_SESSION['tenkhachhang']))) {
-            echo "<span><a class='text-decoration-none ms-1 text-capitalize fw-bold' style='color:red'>" . $_SESSION['tenkhachhang'] . "</a></span>";
-          } else {
+          if (isset($_SESSION['tenkhachhang'])) {
+            echo '<li class="nav-item dropdown"  style="list-style-type: none;">';
+            echo '<a class="nav-link dropdown-toggle fw-bold text-danger" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';
+            echo "" . $_SESSION['tenkhachhang'] . "";
+            echo '</a>';
+            echo '<ul class="dropdown-menu">';
+            echo '<li><a class="dropdown-item" href="thongtinkhachhang.php">Thông tin cá nhân</a></li>';
+            echo '<li><a class="dropdown-item" href="thongtinphanhoi.php">Thông tin phản hồi</a></li>';
+            echo '</ul>';
+            echo '</li>';
+        }else {
             echo "<span class='text-capitalize fw-bold' style='color:red'>" . $_SESSION['tencongty'] . " </span>";
-            echo '<span><a class="text-decoration-none text-dark ms-3" href="nhatuyendung/post_info.php"><i class="fa-regular fa-paste text-secondary"></i>Đăng tin tuyển dụng</a></span>';
+            echo '<span><a class="text-decoration-none text-dark ms-3" href="post_info.php"><i class="fa-regular fa-paste text-secondary"></i>Đăng tin tuyển dụng</a></span>';
           }
           echo '<span><a class="text-decoration-none text-dark ms-3" href="logout.php"><i class="fa-solid fa-right-from-bracket text-secondary"></i>Đăng xuất</a></span>';
         } else {
           echo '<div><a class="text-decoration-none text-dark " href="login.php"><i class="fa-solid fa-user text-secondary"></i> Người tìm việc</a></div>';
-          echo '<div><a class="text-decoration-none text-dark ms-3 " href="http://localhost/web_mysqli/pages/nhatuyendung/login.php"><i class="fa-solid fa-building text-secondary me-1"></i>Nhà tuyển dụng</a></div>';
+          echo '<div><a class="text-decoration-none text-dark ms-3 " href="loginNTD.php"><i class="fa-solid fa-building text-secondary me-1"></i>Nhà tuyển dụng</a></div>';
+          echo '<div><a class="text-decoration-none text-dark ms-3 " href="../admincp/login.php"><i class="fa-solid fa-user-gear text-secondary me-1"></i>Admin</a></div>';
         }
         ?>
-        <div><a class="text-decoration-none text-dark ms-3 " href="../admincp/login.php"><i class="fa-solid fa-user-gear text-secondary me-1"></i>Admin</a></div>
       </div>
     </div>
   </nav>
