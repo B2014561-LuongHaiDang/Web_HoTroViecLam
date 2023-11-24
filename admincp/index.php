@@ -1,3 +1,8 @@
+<?php
+if(isset($_SESSION['loginAD'])){
+    header("Location:index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +17,7 @@
 
 <body>
     <div class="d-flex justify-content-end mt-2">
-        <div><a class="text-decoration-none text-dark me-5" href="login.php"><i class="fa-solid fa-right-from-bracket text-success"></i>Đăng xuất</a></div>
+        <div><a class="text-decoration-none text-dark me-5" href="login.php"><i class="fa-solid fa-right-from-bracket text-secondary"></i>Đăng xuất</a></div>
     </div>
 
 

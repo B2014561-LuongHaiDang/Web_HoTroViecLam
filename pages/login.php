@@ -37,31 +37,32 @@ if (isset($_POST['login'])) {
     <meta charset="utf-8" />
     <title>Đăng nhập</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-<div class="container">
+<?php
+  include "../code/head.php";
+  ?>
+<div class="container" >
         <div class="row">
-            <div class="col-sm-8 offset-sm-2">
-                <div class="mt-2">
-                    <div class="alert alert-info text-center" role="alert">
-                        <h4>Vui lòng đăng nhập tại đây!</h4>
-                    </div>
-                </div>
+            
+            <div class="mt-md-5" >
+            <div class=" col-md-6 offset-md-3">
+            
 
-                <div class="card">
+                <div class="card mt-5 mb-5">
                     <div class="card-header text-center" style="background-color:deepskyblue">
                         <a href="http://localhost/web_mysqli/pages/index.php"><button type="button" class="btn-close position-absolute top-0 end-0 p-3" aria-label="Close"></button></a>
                         <h3>Đăng nhập</h3>
                     </div>
-                    <div class="card-body" style="background-color:aliceblue">
-                        <form id="signupForm" method="post" class="form-horizontal" action="#">
+                    <div class="card-body" >
+                        <form id="signupForm" method="post" class="form-horizontal " action="#">
 
 
 
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Email</label>
+                                <label for="exampleInputEmail1" class="form-label ">Email</label>
                                 <input type="email" class="form-control" id="" name="email">
                             </div>
 
@@ -87,22 +88,20 @@ if (isset($_POST['login'])) {
                     </div>
                 </div>
             </div>
+            </div>
         </div>
     </div>
     </script>
     </nav>
-    <hr />
+ 
 
-    <?php
-    include "../code/footer.php";
-    ?>
 
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#signupForm').validate({
-                rules: {                    
+                rules: {
                     matkhau: {
                         required: true,
                         minlength: 5

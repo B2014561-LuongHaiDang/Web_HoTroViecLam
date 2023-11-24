@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('../pages/config/config.php');
+if(isset($_SESSION['loginAD'])){
 $sql = "select * from tbl_thongtintuyendung where da_duyet=0";
 $ketqua = $conn->query($sql);
 $ketqua = $ketqua->fetchAll(PDO::FETCH_ASSOC);
@@ -72,3 +73,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </body>
 
 </html>
+<?php }else{
+    header('location:login.php');
+}?>

@@ -11,6 +11,7 @@
               <div class=""><a class=" text-decoration-none text-dark h6 " href="cty1.php?id=<?= $cty['tencongty'] ?>"><?= $cty['tencongty'] ?></a></div>
               <div class=""><a class="text-decoration-none text-dark h6 " href="cty1.php?id=<?= $cty['tencongty'] ?>"><?= $cty['vitri_congty'] ?></a></div>
               <div class=""><a class="text-decoration-none text-danger h6 fw-bold" href="">Lương: <?= $cty['mucluong_tuyendung'] ?></a></div>
+              <div class=""><a class="text-decoration-none text-darkr h6" href="">Hạn tuyển dụng: <?= $cty['expired_at'] ?></a></div>
             </div>
           </div>
         </div>

@@ -7,9 +7,12 @@ if (isset($_POST['login'])) {
     $sql = "SELECT * FROM tbl_admin WHERE username=? and password=? LIMIT 1";
     $ketqua = $conn->prepare($sql);
     $ketqua->execute([$email, $matkhau]);
-    $ketqua = $ketqua->fetch(PDO::FETCH_ASSOC);
-    if ($ketqua) {
+    if ($ketqua->rowCount()>0) {
+        $_SESSION['loginAD'] = [];
+        $_SESSION['loginAD']['username'] = $email;
         header("Location:index.php");
+    }else{
+        echo "Tài khoản không tồn tại";
     }
 }
 ?>

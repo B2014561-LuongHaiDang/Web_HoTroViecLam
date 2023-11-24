@@ -1,21 +1,22 @@
 <?php
 session_start();
 include('../config/config.php');
-
+$created_at=time();
 if (isset($_POST['dangky_post_info'])) {
-
     $vitri_post_info = $_POST['vitri_post_info'];
     $tencongty_post_info = $_POST['tencongty_post_info'];
     $diachi_post_info = $_POST['diachi_post_info'];
     $mucluong = $_POST['mucluong'];
     $images = $_POST['images'];
     $link = $_POST['link'];
-    $sql = "INSERT INTO tbl_thongtintuyendung(vitri_tuyendung,tencongty,vitri_congty,mucluong_tuyendung, images, link) VALUE(?,?,?,?,?,?)";
+    $goi = $_POST['goi'];
+    $expired_at = strtotime("+$goi days", $created_at);
+    $expired_at_format = date('Y-m-d', $expired_at);
+    $sql = "INSERT INTO tbl_thongtintuyendung(vitri_tuyendung,tencongty,vitri_congty,mucluong_tuyendung, images, link,expired_at) VALUE(?,?,?,?,?,?,?)";
     $ketqua = $conn->prepare($sql);
-    $ketqua->execute([$vitri_post_info, $tencongty_post_info, $diachi_post_info, $mucluong, $images, $link]);
+    $ketqua->execute([$vitri_post_info, $tencongty_post_info, $diachi_post_info, $mucluong, $images, $link, $expired_at_format]);
     header("Location:http://localhost/web_mysqli/pages/index.php");
 }
-
 ?>
 
 
@@ -73,11 +74,22 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Logo công ty</label>
                                 <input type="text" class="form-control" id="" name="images">
+
                             </div>
+
 
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Link web công ty(Nếu có)</label>
                                 <input type="text" class="form-control" id="" name="link">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="">Chọn gói thuê:</label>
+                                <select id="goi" name="goi" required>
+                                    <option value="7">7 ngày-100k</option>
+                                    <option value="15">15 ngày-180k</option>
+                                    <option value="30">30 ngày-300k</option>
+                                </select>
                             </div>
 
                             <div class="">

@@ -1,15 +1,13 @@
 <?php
 session_start();
 include('../pages/config/config.php');
+if(isset($_SESSION['loginAD'])){
 $id = $_GET['id'];
 $sql = "SELECT * FROM tbl_thongtintuyendung WHERE id_thongtintuyendung = ?";
 $stmt = $conn->prepare($sql);
 $stmt->execute([$id]);
 $ketqua = $stmt->fetch(PDO::FETCH_ASSOC);
-
-
 if (isset($_POST['capnhat'])) {
-
     $vitri_tuyendung = $_POST['vitri_tuyendung'];
     $tencongty = $_POST['tencongty'];
     $vitri_congty = $_POST['vitri_congty'];
@@ -21,7 +19,7 @@ if (isset($_POST['capnhat'])) {
     $ketqua->execute();
     header("Location: delete.php");
 }
-
+}
 
 ?>
 <!DOCTYPE html>

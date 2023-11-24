@@ -1,20 +1,18 @@
-<div class="container">
+<div class="">
         <div class="row">
-            <div class="col-sm-8 offset-sm-2">
-                <div class="mt-2">
-                    <div class="alert alert-info text-center " role="alert">
-                        <h4>Vui lòng đăng nhập tại đây!</h4>
-                    </div>
+        <div class="col-md-7 d-none d-md-block">
+                <div class="text-center mt-2 h2">Nơi uy tín cho bạn bắt đầu tuyển dụng</div>
+                <div style="display: grid; place-items: center;">
+                <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 "src="../images/login_NTD1.png" alt="">
                 </div>
+            </div>
+            <div class="col-md-5">
 
-                <div class="card">
-                    <div class="card-header text-center" style="background-color:deepskyblue">
-                        <a href="http://localhost/web_mysqli/pages/index.php"><button type="button" class="btn-close position-absolute top-0 end-0 p-3" aria-label="Close"></button></a>
-                        <h3>Đăng nhập</h3>
-                    </div>
+
+                <div class="card mt-5 me-4 ms-4">
                     <div class="card-body" style="background-color:aliceblue">
-                        <form id="signupForm" method="post" class="form-horizontal" action="#">
-
+                        <form id="signupForm" method="post" class="form-horizontal mx-4" action="#">
+                        <div class="text-center h3">Nhà tuyển dụng đăng ký</div>
 
 
                             <div class="mb-3">
@@ -34,7 +32,7 @@
 
 
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-outline-info" name="login">Đăng nhập</button>
+                                <button type="submit" class="btn btn-info" name="login">Đăng nhập</button>
                             </div>
 
                             

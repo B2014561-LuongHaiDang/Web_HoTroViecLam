@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('../pages/config/config.php');
+if(isset($_SESSION['loginAD'])){
 $id = $_GET['id'];
 $sql = "SELECT * FROM tbl_phanhoikhachhang WHERE id_phanhoikhachhang = ?";
 $stmt = $conn->prepare($sql);
@@ -21,7 +22,7 @@ if (isset($_POST['reply'])) {
         $ketqua = $ketqua->fetch(PDO::FETCH_ASSOC);
     }
 }
-
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

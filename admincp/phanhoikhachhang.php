@@ -1,11 +1,12 @@
 <?php
 session_start();
 include('../pages/config/config.php');
+if(isset($_SESSION['loginAD'])){
 $sql = "select * from tbl_phanhoikhachhang where gia_tri=0";
 $ketqua = $conn->prepare($sql);
 $ketqua->execute();
 $ketqua = $ketqua->fetchAll();
-
+}
 ?>
 
 <!DOCTYPE html>

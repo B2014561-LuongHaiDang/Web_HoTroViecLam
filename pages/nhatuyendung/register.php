@@ -28,12 +28,12 @@ if (isset($_POST['dangky'])) {
         });
         </script>';
     } else {
-    $sql = "INSERT INTO tbl_dangky_nhatuyendung(email,matkhau,tencongty,sonhanvien,sodienthoai,diachi) VALUE(?,?,?,?,?,?)";
-    $ketqua = $conn->prepare($sql);
-    $ketqua->execute([$email, $matkhau, $tencongty, $sonhanvien, $hotline, $diachi]);
-    $_SESSION['tencongty'] = $tencongty;
-    header("Location:http://localhost/web_mysqli/pages/index.php");
-}
+        $sql = "INSERT INTO tbl_dangky_nhatuyendung(email,matkhau,tencongty,sonhanvien,sodienthoai,diachi) VALUE(?,?,?,?,?,?)";
+        $ketqua = $conn->prepare($sql);
+        $ketqua->execute([$email, $matkhau, $tencongty, $sonhanvien, $hotline, $diachi]);
+        $_SESSION['tencongty'] = $tencongty;
+        header("Location:http://localhost/web_mysqli/pages/index.php");
+    }
 }
 ?>
 
@@ -46,26 +46,80 @@ if (isset($_POST['dangky'])) {
     <meta charset="utf-8" />
     <title>Đăng kí</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-8 offset-sm-2">
-                <div class="mt-2">
-                    <div class="alert alert-info text-center" role="alert">
-                        <h4>Nhà tuyển dụng đăng kí tại đây</h4>
-                    </div>
-                </div>
+<div class="border">
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand fw-bold ms-2" style="color:blue">Hỗ trợ việc làm</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse bg-white" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-                <div class="card">
-                    <div class="card-header text-center position-relative" style="background-color:deepskyblue">
-                        <h3>Đăng ký để bắt đầu đăng việc ngay</h3>
-                    </div>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="../index.php"><i class="fa-solid fa-house text-secondary me-1"></i>Trang chủ</a>
+        </li>
+      </ul>
+      <div class="d-flex align-items-center me-3">
+        <a class="nav-link active" aria-current="page" href="../nganhnghe.php">
+          <i class="fa-solid fa-magnifying-glass text-secondary me-1"></i>
+          Ngành nghề/Khu vực
+        </a>
+      </div>
+      <div class="d-flex align-items-center me-3">
+        <a class="nav-link active" aria-current="page" href="../camnangvieclam.php">
+          <i class="fa-solid fa-book text-secondary me-1"></i>
+          Cẩm nang tìm việc
+        </a>
+      </div>
+      <div class="d-flex align-items-center me-3">
+        <a class="nav-link active" aria-current="page" href="../cv.php">
+          <i class="fa-solid fa-receipt text-secondary me-1"></i>
+          Mẫu CV xin việc
+        </a>
+      </div>
+      
+      <div class="d-flex align-items-center me-3">
+        <?php
+        if ((isset($_SESSION['tenkhachhang'])) || (isset($_SESSION['tencongty']))) {
+          if ((isset($_SESSION['tenkhachhang']))) {
+            echo "<span><a class='text-decoration-none ms-1 text-capitalize fw-bold' style='color:red'>" . $_SESSION['tenkhachhang'] . "</a></span>";
+          } else {
+            echo "<span class='text-capitalize fw-bold' style='color:red'>" . $_SESSION['tencongty'] . " </span>";
+            echo '<span><a class="text-decoration-none text-dark ms-3" href="nhatuyendung/post_info.php"><i class="fa-regular fa-paste text-secondary"></i>Đăng tin tuyển dụng</a></span>';
+          }
+          echo '<span><a class="text-decoration-none text-dark ms-3" href="logout.php"><i class="fa-solid fa-right-from-bracket text-success"></i>Đăng xuất</a></span>';
+        } else {
+          echo '<div><a class="text-decoration-none text-dark " href="login.php"><i class="fa-solid fa-user text-secondary"></i> Người tìm việc</a></div>';
+          echo '<div><a class="text-decoration-none text-dark ms-3 " href="#"><i class="fa-solid fa-building text-secondary me-1"></i>Nhà tuyển dụng</a></div>';
+        }
+        ?>
+        <div><a class="text-decoration-none text-dark ms-3 " href="../admincp/login.php"><i class="fa-solid fa-user-gear text-secondary me-1"></i>Admin</a></div>
+      </div>
+    </div>
+  </nav>
+</div>
+
+    <div class="">
+        <div class="row">
+            <div class="col-md-7 d-none d-md-block">
+                <div class="text-center h2" style="padding-top: 100px;">Nơi uy tín cho bạn bắt đầu tuyển dụng</div>
+                <div style="display: grid; place-items: center;">
+                <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 "src="../images/login_NTD1.png" alt="">
+                </div>
+            </div>
+            <div class="col-md-5">
+
+
+                <div class="card mt-3 me-4 ms-4">
+
 
                     <div class="card-body" style="background-color:aliceblue">
-                        <form id="signupForm" method="POST" class="form-horizontal" action="">
-
+                        <form id="signupForm" method="POST" class="form-horizontal mx-4" action="">
+                            <div class="text-center h3">Nhà tuyển dụng đăng ký</div>
                             <!-- Email -->
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Email</label>
@@ -77,7 +131,12 @@ if (isset($_POST['dangky'])) {
 
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
-                                <input type="password" class="form-control" name="matkhau">
+                                <input type="password" class="form-control" id=matkhau name="matkhau">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Nhập lại mật khẩu</label>
+                                <input type="password" class="form-control" name="NLmatkhau">
                             </div>
 
 
@@ -86,26 +145,26 @@ if (isset($_POST['dangky'])) {
 
                             <!-- Tên công ty -->
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Tên công ty</label>
+                                <label for="" class="form-label">Tên công ty</label>
                                 <input type="text" class="form-control" id="" name="tencongty">
                             </div>
 
 
                             <!-- Số nhân viên -->
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Số nhân viên</label>
+                                <label for="" class="form-label">Số nhân viên</label>
                                 <input type="text" class="form-control" id="" name="sonhanvien">
                             </div>
 
                             <!-- Hotline -->
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Số điện thoại</label>
+                                <label for="" class="form-label">Số điện thoại</label>
                                 <input type="text" class="form-control" id="" name="hotline">
                             </div>
 
                             <!-- Địa chỉ -->
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Địa chỉ</label>
+                                <label for="" class="form-label">Địa chỉ</label>
                                 <input type="text" class="form-control" id="" name="diachi">
                             </div>
 
@@ -115,7 +174,7 @@ if (isset($_POST['dangky'])) {
                             </div>
 
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-outline-info" name="dangky">Đăng ký</button>
+                                <button type="submit" class="btn btn-info" name="dangky">Đăng ký</button>
                             </div>
                             <div class="mt-3 text-center">Quay lại <a href="login.php">Đăng nhập</a></div>
 
@@ -148,6 +207,8 @@ if (isset($_POST['dangky'])) {
                 rules: {
                     hotline: {
                         required: true,
+                        minlength: 10,
+                        maxlength: 10,
                     },
                     sonhanvien: {
                         required: true,
@@ -155,24 +216,18 @@ if (isset($_POST['dangky'])) {
                     tencongty: {
                         required: true,
                     },
-                    tenkhachhang: {
-                        required: true,
-                        minlength: 0
-                    },
                     diachi: {
                         required: true,
                         minlength: 5
                     },
-                    dienthoai: {
-                        required: true,
-                        minlength: 5
-                    },
-
                     matkhau: {
                         required: true,
                         minlength: 5
                     },
-
+                    NLmatkhau: {
+                        required: true,
+                        equalTo: '#matkhau'
+                    },
                     email: {
                         required: true,
                         email: true
@@ -189,21 +244,17 @@ if (isset($_POST['dangky'])) {
                     tencongty: {
                         required: 'Bạn chưa nhập tên công ty',
                     },
-                    tenkhachhang: {
-                        required: 'Bạn chưa nhập vào tên của bạn',
-                    },
                     diachi: {
                         required: 'Bạn chưa nhập địa chỉ',
-                    },
-
-                    dienthoai: {
-                        required: 'Bạn chưa nhập số điện thoại',
                     },
                     matkhau: {
                         required: 'Bạn chưa nhập mật khẩu',
                         minlength: 'Mật khẩu phải có ít nhất 5 ký tự',
                     },
-
+                    NLmatkhau: {
+                        required: 'Bạn chưa xác nhận mật khẩu',
+                        equalTo: 'Mật khẩu không đúng',
+                    },
                     email: 'Hộp thư điện tử không hợp lệ',
                     agree: 'Bạn phải đồng ý với các quy định của chúng tôi',
                 },

@@ -1,9 +1,11 @@
 <?php
 session_start();
 include('../pages/config/config.php');
+if(isset($_SESSION['loginAD'])){
 $sql = "select * from tbl_thongtintuyendung where da_duyet=2";
 $ketqua = $conn->prepare($sql);
 $ketqua->execute();
+
 $ketqua = $ketqua->fetchAll(PDO::FETCH_ASSOC);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['submit'])) {
@@ -24,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location:da_xoa.php");
     }
 };
-
+}
 ?>
 
 
@@ -65,7 +67,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <div class=""><a class=" text-decoration-none text-dark h6 " href="company_profile_cty1/cty1.php"><?= $cty['tencongty'] ?></a></div>
                             <div class=""><a class="text-decoration-none text-dark h6 " href=""><?= $cty['vitri_congty'] ?></a></div>
                             <div class=""><a class="text-decoration-none text-danger h6 fw-bold" href="">Lương: <?= $cty['mucluong_tuyendung'] ?></a></div>
-
+                            <?php 
+                                    $ngayGio = new DateTime($cty["created_at"]);
+                                    // $hethan = new DateTime($cty["expire_at"]);
+                                    $ngay = $ngayGio->format('d-m-Y');
+                                    // $ngayhethan = $hethan->format('d');
+                                    // $thang = $ngayGio->format('m');
+                                    // $nam = $ngayGio->format('Y');
+                                    // $soluongngay= $ngayhethan - $ngay;
+                            ?>
+                            <div class=""><a class="text-decoration-none text-danger h6 fw-bold" href="">Ngày đăng <?=  $ngay ?></a></div>
                             <form method="POST">
                                 <input type="submit" name="submit" class="btn btn-outline-dark" value="Xóa vĩnh viễn"><input type="hidden" name="id" value="<?= $cty['id_thongtintuyendung'] ?>">
                                 <input type="submit" name="restore" class="btn btn-outline-dark" value="Khôi phục"><input type="hidden" name="id_restore" value="<?= $cty['id_thongtintuyendung'] ?>">

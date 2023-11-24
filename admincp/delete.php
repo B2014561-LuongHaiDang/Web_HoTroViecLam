@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('../pages/config/config.php');
+if(isset($_SESSION['loginAD'])){
 $sql = "SELECT * from tbl_thongtintuyendung where da_duyet=1";
 $ketqua = $conn->prepare($sql);
 $ketqua->execute();
@@ -12,16 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $ketqua = $conn->prepare($sql);
         $ketqua->execute([$id]);
         header("Location:delete.php");
-        if ($ketqua) {
-            $id = $_POST['id'];
-            $sql = "DELETE FROM thongtintuyendung WHERE created_at < adddate(now(),-7)) and id_thongtintuyendung=?";
-            $ketqua = $conn->prepare($sql);
-            $ketqua->execute([$id]);
-            $ketqua = $ketqua->fetch(PDO::FETCH_ASSOC);
-        }
     }
 };
-
+}
 ?>
 
 
