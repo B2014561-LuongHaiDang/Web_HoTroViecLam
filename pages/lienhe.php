@@ -60,7 +60,6 @@ if ((isset($_SESSION['tenkhachhang'])) || (isset($_SESSION['tencongty']))) {
 
 ?>
 
-
     <!DOCTYPE html>
     <html lang="en">
 
@@ -152,28 +151,26 @@ if ((isset($_SESSION['tenkhachhang'])) || (isset($_SESSION['tencongty']))) {
                                     <span style=" font-size: 20px">
 
                                         <div class="mb-3">Vui lòng cho chúng tôi biết suy nghĩ của bạn, bất kỳ phản hồi nào cũng sẽ được chúng tôi xem xét cẩn thận.</div>
-                                        <!-- Họ và tên -->
+
                                         <?php foreach ($ketqua1 as $cty) : ?>
                                             <div class="mb-3">
                                                 <label for="exampleInputEmail1" class="form-label">Tên của bạn<span style="color:red">*</span></label>
                                                 <?php
                                                 if (isset($_SESSION['tenkhachhang'])) {
-                                                    echo '<input type="text" class="form-control" name="ten" value="' . htmlspecialchars($cty["tenkhachhang"]) . '" readonly>';
+                                                    echo '<input type="text" class="form-control" name="ten" value="' . htmlspecialchars($cty["tenkhachhang"]) . '">';
                                                 }
-
                                                 if (isset($_SESSION['tencongty'])) {
-                                                    echo '<input type="text" class="form-control" name="ten" value="' . htmlspecialchars($cty["tencongty"]) . '" readonly>';
+                                                    echo '<input type="text" class="form-control" name="ten" value="' . htmlspecialchars($cty["tencongty"]) . '">';
                                                 }
                                                 ?>
                                             </div>
-
-                                            <!-- Email -->
                                             <div class="mb-3">
                                                 <label for="exampleInputEmail1" class="form-label">Email<span style="color:red">*</span></label>
-                                                <input type="email" class="form-control" id="" name="email" value="<?= htmlspecialchars($cty['email']) ?>" readonly>
+                                                <input type="email" class="form-control" id="" name="email" value="<?= htmlspecialchars($cty['email']) ?>">
                                             </div>
+
                                         <?php endforeach ?>
-                                        <!-- Nhận xét -->
+
                                         <div class="mb-3">
                                             <label for="exampleFormControlTextarea1" class="form-label">Nhận xét<span style="color:red">*</span></label>
                                             <textarea class="form-control" id="exampleFormControlTextarea1" name="nhanxet" rows="3"></textarea>
@@ -182,8 +179,9 @@ if ((isset($_SESSION['tenkhachhang'])) || (isset($_SESSION['tencongty']))) {
                                         <div class="mb-3">
                                             <button type="submit" class="btn btn-primary" name="dangky">Gửi đi</button>
                                         </div>
+
                                 </form>
-                                </span>
+
                             </div>
                         </div>
                     </div>

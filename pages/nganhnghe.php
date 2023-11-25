@@ -10,35 +10,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $noidung = $_GET['nghenghiep'];
     $nd = $_GET['khuvuc'];
     $sql = "SELECT * FROM tbl_thongtintuyendung where vitri_tuyendung like ? and vitri_congty like ? and da_duyet=1 ";
-
     $ketqua = $conn->prepare($sql);
-
     $ketqua->execute(["%$noidung%", "%$nd%"]);
-
     $ketqua = $ketqua->fetchAll(PDO::FETCH_ASSOC);
     if (empty($ketqua)) {
       echo '
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script type="text/javascript">
-        $(document).ready(function(){
-        swal({
-        type: "error",
-        title: "Không tìm thấy",
-        icon: "info",
-        showConfirmButton: true,
-        })
-        });
-        </script>';
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <script type="text/javascript">
+            $(document).ready(function(){
+            swal({
+            type: "error",
+            title: "Không tìm thấy",
+            icon: "info",
+            showConfirmButton: true,
+            })
+            });
+            </script>';
+      header("refresh:2;url=nganhnghe.php");
+      exit;
     }
   }
 }
-
-
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -52,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 </head>
 
 <body>
+
   <?php
   include "../code/head.php";
   ?>
@@ -92,9 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
   include "../code/footer.php";
   ?>
 
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-
 
 </body>
 

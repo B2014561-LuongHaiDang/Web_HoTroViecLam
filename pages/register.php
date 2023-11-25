@@ -25,16 +25,14 @@ if (isset($_POST['dangky'])) {
         });
         </script>';
     } else {
-    $sql = "INSERT INTO tbl_dangky_nguoitimviec(tenkhachhang,email,diachi,dienthoai,matkhau)VALUES(?,?,?,?,?) ";
-    $ketqua = $conn->prepare($sql);
-    $ketqua->execute([$tenkhachhang, $email, $diachi, $dienthoai, $matkhau]);
-    $_SESSION['tenkhachhang'] = $tenkhachhang;
-    header("Location:index.php");
-}
+        $sql = "INSERT INTO tbl_dangky_nguoitimviec(tenkhachhang,email,diachi,dienthoai,matkhau)VALUES(?,?,?,?,?) ";
+        $ketqua = $conn->prepare($sql);
+        $ketqua->execute([$tenkhachhang, $email, $diachi, $dienthoai, $matkhau]);
+        $_SESSION['tenkhachhang'] = $tenkhachhang;
+        header("Location:index.php");
+    }
 }
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,56 +41,58 @@ if (isset($_POST['dangky'])) {
     <meta charset="utf-8" />
     <title>Đăng kí</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
+    <?php
+    include "../code/head.php";
+    ?>
     <div class="container">
         <div class="row">
-            <div class="col-sm-8 offset-sm-2">
-                <div class="mt-2">
-                    <div class="alert alert-info text-center" role="alert">
-                        <h4>Vui lòng đăng kí tại đây!</h4>
-                    </div>
+            <div class="col-md-7 d-none d-md-block" style="padding-top:140px">
+                <div style="display: grid; place-items: center;">
+                    <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 " src="images/login_NTVpng.png" alt="">
                 </div>
-
-                <div class="card">
-                    <div class="card-header text-center"  style="background-color:deepskyblue">
-
+            </div>
+            <div class="col-md-5">
+                <div class="card mt-3">
+                    <div class="card-header text-center" style="background-color:deepskyblue">
                         <h3>Đăng ký thành viên</h3>
                     </div>
-                    <div class="card-body" style="background-color:aliceblue">
+                    <div class="card-body">
                         <form id="signupForm" method="POST" class="form-horizontal" action="">
-                            <!-- Họ và tên -->
+
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Tên của bạn</label>
                                 <input type="text" class="form-control" id="" name="tenkhachhang">
                             </div>
 
-                            <!-- Email -->
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="" name="email">
                             </div>
 
-                            <!-- Địa chỉ -->
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Địa chỉ</label>
                                 <input type="text" class="form-control" id="" name="diachi">
                             </div>
 
-                            <!-- Số điện thoại -->
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Số điện thoại</label>
                                 <input type="text" class="form-control" id="" name="dienthoai">
                             </div>
 
-                            <!-- Mật khẩu -->
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
-                                <input type="password" class="form-control" name="matkhau">
+                                <input type="password" class="form-control" id=matkhau name="matkhau">
                             </div>
 
-                            <!-- Checkbox -->
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Nhập lại mật khẩu</label>
+                                <input type="password" class="form-control" name="NLmatkhau">
+                            </div>
+
                             <div class="form-group form-check mb-3">
                                 <input class="form-check-input" type="checkbox" id="agree" name="agree" value="agree" />
                                 <label class="form-check-label" for="agree">Đồng ý các <a href="thoathuannguoidung.php">quy định</a> của chúng tôi</label>
@@ -103,13 +103,12 @@ if (isset($_POST['dangky'])) {
                             </div>
 
                             <div class="mt-3 text-center">Quay lại <a href="login.php">Đăng nhập</a></div>
+
                         </form>
                     </div>
                 </div>
             </div>
-            <!-- Cột nội dung -->
         </div>
-        <!-- Dòng nội dung -->
     </div>
 
     <hr />
@@ -139,6 +138,10 @@ if (isset($_POST['dangky'])) {
                         required: true,
                         minlength: 5
                     },
+                    NLmatkhau: {
+                        required: true,
+                        equalTo: '#matkhau'
+                    },
                     email: {
                         required: true,
                         email: true
@@ -146,20 +149,22 @@ if (isset($_POST['dangky'])) {
                     agree: 'required',
                 },
                 messages: {
-
                     tenkhachhang: {
                         required: 'Bạn chưa nhập vào tên của bạn',
                     },
                     diachi: {
                         required: 'Bạn chưa nhập địa chỉ',
                     },
-
                     dienthoai: {
                         required: 'Bạn chưa nhập số điện thoại',
                     },
                     matkhau: {
                         required: 'Bạn chưa nhập mật khẩu',
                         minlength: 'Mật khẩu phải có ít nhất 5 ký tự',
+                    },
+                    NLmatkhau: {
+                        required: 'Bạn chưa xác nhận mật khẩu',
+                        equalTo: 'Mật khẩu không đúng',
                     },
                     email: 'Hộp thư điện tử không hợp lệ',
                     agree: 'Bạn phải đồng ý với các quy định của chúng tôi',

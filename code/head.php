@@ -39,8 +39,8 @@
             echo "" . $_SESSION['tenkhachhang'] . "";
             echo '</a>';
             echo '<ul class="dropdown-menu">';
-            echo '<li><a class="dropdown-item" href="thongtinkhachhang.php">Thông tin cá nhân</a></li>';
-            echo '<li><a class="dropdown-item" href="thongtinphanhoi.php">Thông tin phản hồi</a></li>';
+            echo '<li><a class="dropdown-item" href="#">Thông tin cá nhân</a></li>';
+            echo '<li><a class="dropdown-item" href="#">Thông tin phản hồi</a></li>';
             echo '</ul>';
             echo '</li>';
         }else {
@@ -51,7 +51,6 @@
         } else {
           echo '<div><a class="text-decoration-none text-dark " href="login.php"><i class="fa-solid fa-user text-secondary"></i> Người tìm việc</a></div>';
           echo '<div><a class="text-decoration-none text-dark ms-3 " href="loginNTD.php"><i class="fa-solid fa-building text-secondary me-1"></i>Nhà tuyển dụng</a></div>';
-          echo '<div><a class="text-decoration-none text-dark ms-3 " href="../admincp/login.php"><i class="fa-solid fa-user-gear text-secondary me-1"></i>Admin</a></div>';
         }
         ?>
       </div>

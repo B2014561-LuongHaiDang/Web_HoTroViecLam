@@ -70,35 +70,35 @@ include('config/config.php');
                         <span style="font-size: 19px;">Loại CV này là sự kết hợp giữa CV theo trình tự thời gian ngược và chức năng.</span>
                     </div>
                 </div>
-
-
             </div>
         </div>
 
         <div class="text-primary-emphasis h1" style="padding-top: 20px;">Một số mẫu CV xin việc</div>
+
         <div class="row" style="padding-top:15px;padding-bottom: 20px;">
             <div class="col-6 col-md-4 border"><a class="text-decoration-none" href="https://vietcv.io/connect/templates/mau-cv/cerulean-blue">
-                <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white" src="https://dxwd4tssreb4w.cloudfront.net/vcv/confidential/519bc06df5c46b4868a3a910a2a6016f.png" />
-                <div class="text-center text-primary-emphasis h2">CV Cerulean Blue</div></a>
+                    <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white" src="https://dxwd4tssreb4w.cloudfront.net/vcv/confidential/519bc06df5c46b4868a3a910a2a6016f.png" />
+                    <div class="text-center text-primary-emphasis h2">CV Cerulean Blue</div>
+                </a>
             </div>
 
             <div class="col-6 col-md-4 border"><a class="text-decoration-none" href="https://vietcv.io/connect/templates/mau-cv/pha-cach">
-                <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white" src="https://dxwd4tssreb4w.cloudfront.net/vcv/confidential/ebea2c9a74f726aeda701889e33ec1d0.png" />
-                <div class="text-center text-primary-emphasis h2">CV Phá cách</div></a>
+                    <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white" src="https://dxwd4tssreb4w.cloudfront.net/vcv/confidential/ebea2c9a74f726aeda701889e33ec1d0.png" />
+                    <div class="text-center text-primary-emphasis h2">CV Phá cách</div>
+                </a>
             </div>
 
             <div class="col-6 col-md-4 border"><a class="text-decoration-none" href="https://vietcv.io/connect/templates/mau-cv/noi-bat">
-                <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white" src="https://dxwd4tssreb4w.cloudfront.net/vcv/confidential/296def42558384555be3beeae236bca7.png" />
-                <div class="text-center text-primary-emphasis h2">CV Nổi Bật</div></a>
+                    <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white" src="https://dxwd4tssreb4w.cloudfront.net/vcv/confidential/296def42558384555be3beeae236bca7.png" />
+                    <div class="text-center text-primary-emphasis h2">CV Nổi Bật</div>
+                </a>
             </div>
-            </div>
+        </div>
     </div>
-
 
     <?php
     include "../code/footer.php";
     ?>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>

@@ -51,16 +51,15 @@ include('config/config.php');
             <div class=" col-md-3">
                 <div class="row border">
                     <div class="h5 fw-bold">Bài viết nổi bật</div>
-                    <div class="col-7 col-md-7" style="padding-top:10px;">                        
+                    <div class="col-7 col-md-7" style="padding-top:10px;">
                         <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white" src="https://dxwd4tssreb4w.cloudfront.net/image/2b447e0b42af9764716f0f9a05a6f999" />
                     </div>
                     <div class="col-5 col-md-5" style="padding-top:10px;">
                         <div class="h7">Góc kỹ năng</div>
                         <div class="h4">5 lí do đừng nên so sánh công việc của mình với người khác</div>
                     </div>
-                    
-                    
-                    <div class="col-7 col-md-7" style="padding-top:10px;">                        
+
+                    <div class="col-7 col-md-7" style="padding-top:10px;">
                         <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white" src="https://dxwd4tssreb4w.cloudfront.net/image/f3a25904446e3a88019f6853a6a66551" />
                     </div>
                     <div class="col-5 col-md-5" style="padding-top:10px;">
@@ -68,8 +67,7 @@ include('config/config.php');
                         <div class="h4">Dự đoán công danh sự nghiệp của 12 chòm sao trong năm 2020</div>
                     </div>
 
-
-                    <div class="col-7 col-md-7" style="padding-top:10px;">                        
+                    <div class="col-7 col-md-7" style="padding-top:10px;">
                         <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white" src="https://dxwd4tssreb4w.cloudfront.net/image/75bd2b52265ed956bfe2ac66962f3488" />
                     </div>
                     <div class="col-5 col-md-5" style="padding-top:10px;">
@@ -77,8 +75,7 @@ include('config/config.php');
                         <div class="h4">Sử dụng cử chỉ tay trong giao tiếp sao cho hiệu quả?</div>
                     </div>
 
-
-                    <div class="col-7 col-md-7" style="padding-top:10px;">                        
+                    <div class="col-7 col-md-7" style="padding-top:10px;">
                         <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white" src="https://dxwd4tssreb4w.cloudfront.net/image/0a29b04f5520b620f93a1a2e5bca07ef" />
                     </div>
                     <div class="col-5 col-md-5" style="padding-top:10px;">
@@ -86,17 +83,15 @@ include('config/config.php');
                         <div class="h4">Bí quyết nhảy việc thành công</div>
                     </div>
 
-
-                    <div class="col-7 col-md-7" style="padding-top:10px;">                        
+                    <div class="col-7 col-md-7" style="padding-top:10px;">
                         <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white" src="https://cl-wpml.s3.ap-southeast-1.amazonaws.com/cam-nang-viec-lam/wp-content/uploads/2022/10/04114556/Cartel-la-gi-Cac-loai-tieu-bieu-va-muc-dich-hoat-dong.jpeg" />
                     </div>
                     <div class="col-5 col-md-5" style="padding-top:10px;">
                         <div class="h7">Kiến thức kinh tế</div>
                         <div class="h4">Cartel là gì? Các loại tiêu biểu và mục đích hoạt động</div>
-                    </div> 
+                    </div>
 
-
-                    <div class="col-7 col-md-7" style="padding-top:10px;">                        
+                    <div class="col-7 col-md-7" style="padding-top:10px;">
                         <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white" src="https://cl-wpml.s3.ap-southeast-1.amazonaws.com/cam-nang-viec-lam/wp-content/uploads/2022/10/04114431/Nang-suat-la-gi-Bi-quyet-de-nang-cao-nang-suat-lam-viec.jpeg" />
                     </div>
                     <div class="col-5 col-md-5" style="padding-top:10px;">
@@ -104,8 +99,7 @@ include('config/config.php');
                         <div class="h4">Năng suất là gì? Bí quyết để nâng cao năng suất làm việc</div>
                     </div>
 
-
-                    <div class="col-7 col-md-7" style="padding-top:10px;">                        
+                    <div class="col-7 col-md-7" style="padding-top:10px;">
                         <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white" src="https://dxwd4tssreb4w.cloudfront.net/image/5c03f8168d634980202c6fd360c10760" />
                     </div>
                     <div class="col-5 col-md-5" style="padding-top:10px;">
@@ -113,14 +107,14 @@ include('config/config.php');
                         <div class="h4">Không thể trả lời câu hỏi phỏng vấn: 5 mẹo xử lý</div>
                     </div>
 
-
-                    <div class="col-7 col-md-7" style="padding-top:10px;">                        
+                    <div class="col-7 col-md-7" style="padding-top:10px;">
                         <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 bg-white" src="https://dxwd4tssreb4w.cloudfront.net/image/c04dc90daa6a1d0a816e2da5610a790c" />
                     </div>
                     <div class="col-5 col-md-5" style="padding-top:10px;">
                         <div class="h7">Trước suy nghĩ về thay đổi việc làm</div>
                         <div class="h4">Nên gắn bó với công việc đầu tiên bao lâu?</div>
                     </div>
+
                 </div>
             </div>
             <div class="col-1 col-md-1"></div>

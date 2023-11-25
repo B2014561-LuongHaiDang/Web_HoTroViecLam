@@ -25,6 +25,8 @@ if (isset($_POST['dangky'])) {
         })
         });
         </script>';
+        header("refresh:2;url=index.php");
+        exit;
     } else {
         $sql = "INSERT INTO tbl_dangky_nhatuyendung(email,matkhau,tencongty,sonhanvien,sodienthoai,diachi) VALUE(?,?,?,?,?,?)";
         $ketqua = $conn->prepare($sql);
@@ -34,8 +36,6 @@ if (isset($_POST['dangky'])) {
     }
 }
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,35 +48,31 @@ if (isset($_POST['dangky'])) {
 </head>
 
 <body>
-<?php
-  include "../code/head.php";
-  ?>
+
+    <?php
+    include "../code/head.php";
+    ?>
 
     <div class="">
         <div class="row">
             <div class="col-md-7 d-none d-md-block">
                 <div class="text-center h2" style="padding-top: 100px;">Nơi uy tín cho bạn bắt đầu tuyển dụng</div>
                 <div style="display: grid; place-items: center;">
-                <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 "src="images/login_NTD1.png" alt="">
+                    <img class="img-fluid hot-job__logo img-thumbnail mr-2 mr-sm-3 border-0 " src="images/login_NTD1.png" alt="">
                 </div>
             </div>
+
             <div class="col-md-5">
-
-
                 <div class="card mt-3 me-4 ms-4">
-
-
                     <div class="card-body" style="background-color:aliceblue">
+
                         <form id="signupForm" method="POST" class="form-horizontal mx-4" action="">
                             <div class="text-center h3">Nhà tuyển dụng đăng ký</div>
-                            <!-- Email -->
+
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="" name="email">
                             </div>
-
-
-                            <!-- Mật khẩu -->
 
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
@@ -88,30 +84,23 @@ if (isset($_POST['dangky'])) {
                                 <input type="password" class="form-control" name="NLmatkhau">
                             </div>
 
-
-                            <div class="text-center h4">Thông tin công ty</div>
-
-
-                            <!-- Tên công ty -->
                             <div class="mb-3">
                                 <label for="" class="form-label">Tên công ty</label>
                                 <input type="text" class="form-control" id="" name="tencongty">
                             </div>
 
+                            <div class="text-center h4">Thông tin công ty</div>
 
-                            <!-- Số nhân viên -->
                             <div class="mb-3">
                                 <label for="" class="form-label">Số nhân viên</label>
                                 <input type="text" class="form-control" id="" name="sonhanvien">
                             </div>
 
-                            <!-- Hotline -->
                             <div class="mb-3">
                                 <label for="" class="form-label">Số điện thoại</label>
                                 <input type="text" class="form-control" id="" name="hotline">
                             </div>
 
-                            <!-- Địa chỉ -->
                             <div class="mb-3">
                                 <label for="" class="form-label">Địa chỉ</label>
                                 <input type="text" class="form-control" id="" name="diachi">
@@ -125,32 +114,26 @@ if (isset($_POST['dangky'])) {
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-info" name="dangky">Đăng ký</button>
                             </div>
-                            <div class="mt-3 text-center">Quay lại <a href="login.php">Đăng nhập</a></div>
+                            <div class="mt-3 text-center">Quay lại <a href="loginNTD.php">Đăng nhập</a></div>
 
+                        </form>
+                        
                     </div>
-                    </form>
                 </div>
             </div>
         </div>
-        <!-- Cột nội dung -->
     </div>
-    <!-- Dòng nội dung -->
     </script>
     </nav>
 
     <hr />
     <?php
-    include "../../code/footer.php";
+    include "../code/footer.php";
     ?>
 
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
     <script type="text/javascript">
-        // $.validator.setDefaults({
-        //     submitHandler: function () {
-        //         alert('Đăng kí thành công!');
-        //     },
-        // });
         $(document).ready(function() {
             $('#signupForm').validate({
                 rules: {
